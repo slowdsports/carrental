@@ -344,8 +344,8 @@ a,
 .header_style2 .dropdown-menu > .active > a:hover, 
 .header_style2 .dropdown-menu > li > a:focus, 
 .header_style2 .dropdown-menu > li > a:hover {
-	color:#fa2837;
-	fill: #fa2837;
+	color:#004aad;
+	fill: #004aad;
 }
 
 a:hover, a:focus, .btn-link:hover {
@@ -385,8 +385,8 @@ a:hover, a:focus, .btn-link:hover {
 #other_info, 
 .main_bg, 
 .slider .slider-handle, .slider .slider-selection {
-  background: #fa2837 none repeat scroll 0 0;
-  fill: #fa2837;
+  background: #004aad none repeat scroll 0 0;
+  fill: #004aad;
 }
 .btn:hover, .btn:focus, 
 .search_other:hover, 
@@ -409,14 +409,14 @@ blockquote,
 .navbar-default .navbar-toggle, 
 .owl-buttons div, 
 .about_info .icon_box {
-	border-color: #fa2837;
+	border-color: #004aad;
 }
 
 .recent-tab .nav.nav-tabs li.active::after {
-	border-color: #fa2837 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+	border-color: #004aad rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
 }
 .td_divider:after {
-	border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0 ) rgba(0, 0, 0, 0 ) #fa2837 ;
+	border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0 ) rgba(0, 0, 0, 0 ) #004aad ;
 }
 
 .navbar-nav > li > .dropdown-menu li {
@@ -425,7 +425,7 @@ blockquote,
 
 @media (max-width:767px) {
 .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-	color:#fa2837;	
+	color:#004aad;	
 }
 
 
@@ -670,7 +670,7 @@ table thead th, table thead td {
 	background:#eeeeee;
 }
 .primary-bg {
-  background: #fa2837;
+  background: #004aad;
   color:#fff;
 }
 .section-padding {
@@ -989,7 +989,7 @@ nav.navbar {
 }
 .navbar-default .navbar-nav li:hover a, 
 .navbar-default .navbar-nav li.active a {
-	color:#fff;	
+	color:#004aad;	
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:focus, 
@@ -1313,7 +1313,7 @@ nav.navbar {
 }
 .blog-info-box .share_article:hover ul li a:hover {
 	border-radius:50%;
-	color:#fa2837;
+	color:#004aad;
 }
 .blog-info-box .share_article ul {
 	position:absolute;
@@ -2640,7 +2640,7 @@ table.info-tabel tr td {
 }
 .listing_detail_wrap .nav-tabs > li.active a, .listing_detail_wrap .nav-tabs > li:hover a {
 	color:#fff;
-	background:#fa2837;
+	background:#004aad;
 }
 .listing_detail_wrap .tab-content {
   padding: 30px;
@@ -3701,7 +3701,7 @@ table.info-tabel tr td {
 	font-weight:900;
 }
 .profile_nav ul li.active a, .profile_nav ul li a:hover {
-	color:#fa2837;
+	color:#004aad;
 }
 
 .profile_wrap form {
