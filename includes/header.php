@@ -12,9 +12,6 @@
     <link href="assets/css/slick.css" rel="stylesheet">
     <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all"
-        data-default-color="true" />
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
         href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
@@ -33,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 col-md-2">
-                    <div class="logo"> <a href="index.php"><img src="assets/images/destinyw.jpeg" alt="image" /></a>
+                    <div class="logo"> <a href="index.php"><img src="assets/images/logob.png" alt="image" /></a>
                     </div>
                 </div>
                 <div class="col-sm-9 col-md-10">
