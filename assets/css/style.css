@@ -391,8 +391,10 @@ a:hover, a:focus, .btn-link:hover {
 .btn:hover, .btn:focus, 
 .search_other:hover, 
 #other_info:hover {
-	background-color: #c60210;
-	fill: #fb4d59;
+  border-radius: 15px;
+  background-color: #fff;
+  fill: #000;
+  color: #000;
 }
 
 .nav-tabs > li.active > a, 
@@ -898,11 +900,17 @@ table thead th, table thead td {
   margin-top: 1px;
   padding: 5px 10px;
 }
+#search_toggle:hover {
+  border-color: #fff;
+}
 .user_login {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 3px;
   float: left;
   margin: 18px 10px 17px 0;
+}
+.user_login:hover {
+  border-color: #fff;
 }
 .user_login ul {
 	padding:0px;
@@ -1238,6 +1246,7 @@ nav.navbar {
   background: #ffffff none repeat scroll 0 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-top: 40px;
+  border-radius: 15px;
 }
 .car-info-box { position:relative;}
 .car-info-box ul {
@@ -1247,6 +1256,33 @@ nav.navbar {
   padding: 0 15px;
   position: absolute;
   width: 100%;
+  border-radius: 10px;
+}
+.car-info-box img {
+	transition-duration:0.3s;
+	 -moz-transition-duration:0.3s;
+	  -o-transition-duration:0.3s;
+	   -webkit-transition-duration:0.3s;
+	    -ms-transition-duration:0.3s;
+	transform:scale(1);
+	 -moz-transform:scale(1);
+	  -o-transform:scale(1);
+	   -webkit-transform:scale(1);
+	    -ms-transform:scale(1);
+	width: 100%;
+  border-radius: 10px;
+}
+.car-info-box:hover {
+  background-color: #004aad;
+  border-radius: 10px;
+}
+.car-info-box:hover img {
+	transform:scale(0.97);
+	 -moz-transform:scale(0.97);
+	  -o-transform:scale(0.97);
+	   -webkit-transform:scale(0.97);
+	    -ms-transform:scale(0.97);
+      border-radius: 10px;
 }
 .car-info-box li {
   color: #ffffff;
@@ -1913,7 +1949,8 @@ input.newsletter-input {
   width: 40px;
 }
 .back-top a:hover, .back-top a:focus {
-	color:#fff;
+	color:#004aad;
+  background-color: #fff;
 }
 
 
@@ -2392,6 +2429,26 @@ form .slider.slider-horizontal {
   position:relative;
   overflow:hidden;
 }
+.product-listing-img img {
+	transition-duration:0.3s;
+	 -moz-transition-duration:0.3s;
+	  -o-transition-duration:0.3s;
+	   -webkit-transition-duration:0.3s;
+	    -ms-transition-duration:0.3s;
+	transform:scale(1);
+	 -moz-transform:scale(1);
+	  -o-transform:scale(1);
+	   -webkit-transform:scale(1);
+	    -ms-transform:scale(1);
+	width: 100%;
+}
+.product-listing-img:hover img {
+	transform:scale(1.1);
+	 -moz-transform:scale(1.1);
+	  -o-transform:scale(1.1);
+	   -webkit-transform:scale(1.1);
+	    -ms-transform:scale(1.1);
+}
 .product-listing-content {
   float: left;
   padding:20px 15px 20px 30px;
@@ -2447,6 +2504,9 @@ form .slider.slider-horizontal {
 }
 .recent_addedcars ul li a {
   display: block;
+}
+.recent_addedcars ul li a:hover {
+  color: #004aad;
 }
 .recent_post_img {
   float: left;
