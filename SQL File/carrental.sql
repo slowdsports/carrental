@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 06, 2024 at 05:57 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-02-2026 a las 05:53:30
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `carrental`
+-- Base de datos: `carrental`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Estructura de tabla para la tabla `admin`
 --
 
 CREATE TABLE `admin` (
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `admin`
+-- Volcado de datos para la tabla `admin`
 --
 
 INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblbooking`
+-- Estructura de tabla para la tabla `tblbooking`
 --
 
 CREATE TABLE `tblbooking` (
@@ -61,16 +61,18 @@ CREATE TABLE `tblbooking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblbooking`
+-- Volcado de datos para la tabla `tblbooking`
 --
 
 INSERT INTO `tblbooking` (`id`, `BookingNumber`, `userEmail`, `VehicleId`, `FromDate`, `ToDate`, `message`, `Status`, `PostingDate`, `LastUpdationDate`) VALUES
-(1, 443108139, 'amikt12@gmail.com', 2, '2024-06-08', '2024-06-10', 'I want booking', 1, '2024-06-05 05:32:39', '2024-06-05 05:34:08');
+(1, 443108139, 'amikt12@gmail.com', 2, '2024-06-08', '2024-06-10', 'I want booking', 1, '2024-06-05 05:32:39', '2024-06-05 05:34:08'),
+(2, 424498828, 'test@gmail.com', 2, '2026-01-01', '2026-01-05', 'Con fechas incorrectas, papá', 0, '2026-01-28 04:43:43', NULL),
+(3, 913805873, 'test@gmail.com', 5, '2026-01-28', '2026-01-30', 'lkjnjn onnoi oijoj', 0, '2026-01-28 04:54:13', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblbrands`
+-- Estructura de tabla para la tabla `tblbrands`
 --
 
 CREATE TABLE `tblbrands` (
@@ -81,21 +83,21 @@ CREATE TABLE `tblbrands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblbrands`
+-- Volcado de datos para la tabla `tblbrands`
 --
 
 INSERT INTO `tblbrands` (`id`, `BrandName`, `CreationDate`, `UpdationDate`) VALUES
-(1, 'Maruti', '2024-05-01 16:24:34', '2024-06-05 05:26:25'),
-(2, 'BMW', '2024-05-01 16:24:34', '2024-06-05 05:26:34'),
-(3, 'Audi', '2024-05-01 16:24:34', '2024-06-05 05:26:34'),
+(1, 'Kia', '2024-05-01 16:24:34', '2026-02-02 00:15:15'),
+(2, 'Chery', '2024-05-01 16:24:34', '2026-02-02 00:46:56'),
+(3, 'Suzuki', '2024-05-01 16:24:34', '2026-02-02 00:50:37'),
 (4, 'Nissan', '2024-05-01 16:24:34', '2024-06-05 05:26:34'),
 (5, 'Toyota', '2024-05-01 16:24:34', '2024-06-05 05:26:34'),
-(7, 'Volkswagon', '2024-05-01 16:24:34', '2024-06-05 05:26:34');
+(7, 'Ford', '2024-05-01 16:24:34', '2026-02-02 01:04:25');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblcontactusinfo`
+-- Estructura de tabla para la tabla `tblcontactusinfo`
 --
 
 CREATE TABLE `tblcontactusinfo` (
@@ -106,16 +108,16 @@ CREATE TABLE `tblcontactusinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblcontactusinfo`
+-- Volcado de datos para la tabla `tblcontactusinfo`
 --
 
 INSERT INTO `tblcontactusinfo` (`id`, `Address`, `EmailId`, `ContactNo`) VALUES
-(1, 'J&K Block, Laxmi Nagar', 'info@gmail.com', '8974561236');
+(1, 'Aeropuerto Ramon Villeda Morales, San Pedro Sula, Cortes', 'service_destiny@icloud.com', '97990336');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblcontactusquery`
+-- Estructura de tabla para la tabla `tblcontactusquery`
 --
 
 CREATE TABLE `tblcontactusquery` (
@@ -129,7 +131,7 @@ CREATE TABLE `tblcontactusquery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblcontactusquery`
+-- Volcado de datos para la tabla `tblcontactusquery`
 --
 
 INSERT INTO `tblcontactusquery` (`id`, `name`, `EmailId`, `ContactNumber`, `Message`, `PostingDate`, `status`) VALUES
@@ -138,7 +140,7 @@ INSERT INTO `tblcontactusquery` (`id`, `name`, `EmailId`, `ContactNumber`, `Mess
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblpages`
+-- Estructura de tabla para la tabla `tblpages`
 --
 
 CREATE TABLE `tblpages` (
@@ -149,7 +151,7 @@ CREATE TABLE `tblpages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblpages`
+-- Volcado de datos para la tabla `tblpages`
 --
 
 INSERT INTO `tblpages` (`id`, `PageName`, `type`, `detail`) VALUES
@@ -161,7 +163,7 @@ INSERT INTO `tblpages` (`id`, `PageName`, `type`, `detail`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblsubscribers`
+-- Estructura de tabla para la tabla `tblsubscribers`
 --
 
 CREATE TABLE `tblsubscribers` (
@@ -171,7 +173,7 @@ CREATE TABLE `tblsubscribers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblsubscribers`
+-- Volcado de datos para la tabla `tblsubscribers`
 --
 
 INSERT INTO `tblsubscribers` (`id`, `SubscriberEmail`, `PostingDate`) VALUES
@@ -181,7 +183,7 @@ INSERT INTO `tblsubscribers` (`id`, `SubscriberEmail`, `PostingDate`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbltestimonial`
+-- Estructura de tabla para la tabla `tbltestimonial`
 --
 
 CREATE TABLE `tbltestimonial` (
@@ -195,7 +197,7 @@ CREATE TABLE `tbltestimonial` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblusers`
+-- Estructura de tabla para la tabla `tblusers`
 --
 
 CREATE TABLE `tblusers` (
@@ -213,7 +215,7 @@ CREATE TABLE `tblusers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblusers`
+-- Volcado de datos para la tabla `tblusers`
 --
 
 INSERT INTO `tblusers` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `dob`, `Address`, `City`, `Country`, `RegDate`, `UpdationDate`) VALUES
@@ -223,7 +225,7 @@ INSERT INTO `tblusers` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblvehicles`
+-- Estructura de tabla para la tabla `tblvehicles`
 --
 
 CREATE TABLE `tblvehicles` (
@@ -257,144 +259,144 @@ CREATE TABLE `tblvehicles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `tblvehicles`
+-- Volcado de datos para la tabla `tblvehicles`
 --
 
 INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
-(1, 'Maruti Suzuki Wagon R', 1, 'Maruti Wagon R Latest Updates\r\n\r\nMaruti Suzuki has launched the BS6 Wagon R S-Electrico in India. The LXI Electrico and LXI (O) Electrico variants now cost Rs 5.25 lakh and Rs 5.32 lakh respectively, up by Rs 19,000. Maruti claims a fuel economy of 32.52km per kg. The Electrico Wagon R’s continuation in the BS6 era is part of the carmaker’s ‘Mission Green Million’ initiative announced at Auto Expo 2020.\r\n\r\nPreviously, the carmaker had updated the 1.0-litre powertrain to meet BS6 emission norms. It develops 68PS of power and 90Nm of torque, same as the BS4 unit. However, the updated motor now returns 21.79 kmpl, which is a little less than the BS4 unit’s 22.5kmpl claimed figure. Barring the Electrico variants, the prices of the Wagon R 1.0-litre have been hiked by Rs 8,000.', 500, 'Gasolina', 2019, 5, 'rear-3-4-left-589823254_930x620.jpg', 'tail-lamp-1666712219_930x620.jpg', 'rear-3-4-right-520328200_930x620.jpg', 'steering-close-up-1288209207_930x620.jpg', 'boot-with-standard-luggage-202327489_930x620.jpg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2024-06-05 05:30:19'),
-(2, 'BMW 5 Series', 2, 'BMW 5 Series price starts at ? 55.4 Lakh and goes upto ? 68.39 Lakh. The price of Gasolina version for 5 Series ranges between ? 55.4 Lakh - ? 60.89 Lakh and the price of Diesel version for 5 Series ranges between ? 60.89 Lakh - ? 68.39 Lakh.', 1000, 'Gasolina', 2018, 5, 'BMW-5-Series-Exterior-102005.jpg', 'BMW-5-Series-New-Exterior-89729.jpg', 'BMW-5-Series-Exterior-102006.jpg', 'BMW-5-Series-Interior-102021.jpg', 'BMW-5-Series-Interior-102022.jpg', 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, '2024-05-10 07:04:35', '2024-06-05 05:30:33'),
-(3, 'Audi Q8', 3, 'As per ARAI, the mileage of Q8 is 0 kmpl. Real mileage of the vehicle varies depending upon the driving habits. City and highway mileage figures also vary depending upon the road conditions.', 3000, 'Gasolina', 2017, 5, 'audi-q8-front-view4.jpg', '1920x1080_MTC_XL_framed_Audi-Odessa-Armaturen_Spiegelung_CC_v05.jpg', 'audi1.jpg', '1audiq8.jpg', 'audi-q8-front-view4.jpeg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2024-06-05 05:30:33'),
-(4, 'Nissan Kicks', 4, 'Latest Update: Nissan has launched the Kicks 2020 with a new turbocharged petrol engine. You can read more about it here.\r\n\r\nNissan Kicks Price and Variants: The Kicks is available in four variants: XL, XV, XV Premium, and XV Premium(O).', 800, 'Gasolina', 2020, 5, 'front-left-side-47.jpg', 'kicksmodelimage.jpg', 'download.jpg', 'kicksmodelimage.jpg', '', 1, NULL, NULL, 1, NULL, NULL, 1, 1, NULL, NULL, NULL, 1, '2024-05-10 07:04:35', '2024-06-05 05:30:33'),
-(5, 'Nissan GT-R', 4, ' The GT-R packs a 3.8-litre V6 twin-turbocharged petrol, which puts out 570PS of max power at 6800rpm and 637Nm of peak torque. The engine is mated to a 6-speed dual-clutch transmission in an all-wheel-drive setup. The 2+2 seater GT-R sprints from 0-100kmph in less than 3', 2000, 'Gasolina', 2019, 5, 'Nissan-GTR-Right-Front-Three-Quarter-84895.jpg', 'Best-Nissan-Cars-in-India-New-and-Used-1.jpg', '2bb3bc938e734f462e45ed83be05165d.jpg', '2020-nissan-gtr-rakuda-tan-semi-aniline-leather-interior.jpg', 'images.jpg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2024-06-05 05:30:33'),
-(6, 'Nissan Sunny 2020', 4, 'Value for money product and it was so good It is more spacious than other sedans It looks like a luxurious car.', 400, 'Electrico', 2018, 5, 'Nissan-Sunny-Right-Front-Three-Quarter-48975_ol.jpg', 'images (1).jpg', 'Nissan-Sunny-Interior-114977.jpg', 'nissan-sunny-8a29f53-500x375.jpg', 'new-nissan-sunny-photo.jpg', 1, 1, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2024-06-05 05:30:33'),
-(7, 'Toyota Fortuner', 5, 'Toyota Fortuner Features: It is a premium seven-seater SUV loaded with features such as LED projector headlamps with LED DRLs, LED fog lamp, and power-adjustable and foldable ORVMs. Inside, the Fortuner offers features such as power-adjustable driver seat, automatic climate control, push-button stop/start, and cruise control.\r\n\r\nToyota Fortuner Safety Features: The Toyota Fortuner gets seven airbags, hill assist control, vehicle stability control with brake assist, and ABS with EBD.', 3000, 'Gasolina', 2020, 5, '2015_Toyota_Fortuner_(New_Zealand).jpg', 'toyota-fortuner-legender-rear-quarters-6e57.jpg', 'zw-toyota-fortuner-2020-2.jpg', 'download (1).jpg', '', NULL, NULL, NULL, NULL, NULL, 1, NULL, 1, NULL, 1, 1, 1, '2024-05-10 07:04:35', '2024-06-05 05:30:33'),
-(8, 'Maruti Suzuki Vitara Brezza', 1, 'The new Vitara Brezza is a well-rounded package that is feature-loaded and offers good drivability. And it is backed by Maruti’s vast service network, which ensures a peace of mind to customers. The petrol motor could have been more refined and offered more pep.', 600, 'Gasolina', 2018, 5, 'marutisuzuki-vitara-brezza-right-front-three-quarter3.jpg', 'marutisuzuki-vitara-brezza-rear-view37.jpg', 'marutisuzuki-vitara-brezza-dashboard10.jpg', 'marutisuzuki-vitara-brezza-boot-space59.jpg', 'marutisuzuki-vitara-brezza-boot-space28.jpg', NULL, 1, 1, 1, NULL, NULL, 1, NULL, NULL, NULL, 1, NULL, '2024-05-10 07:04:35', '2024-06-05 05:30:33');
+(1, 'Río', 1, 'El Kia Río es un sedán subcompacto de entrada, fabricado en China, que destaca por su diseño funcional, amplio espacio interior y un maletero de 475 litros. Equipado con un motor de 1.4L (94 hp) y opciones manuales o automáticas, es una opción económica enfocada en la eficiencia, seguridad básica (doble airbag, ABS) y conectividad (Android Auto/Apple CarPlay). ', 500, 'Gasolina', 2019, 5, 'kiario.jpeg', 'kiario.jpeg', 'kiario.jpeg', 'kiario.jpeg', 'kiario.jpeg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 00:37:48'),
+(2, 'Tiggo 8 Pro', 2, 'El Chery Tiggo 8 Pro es un SUV mediano premium de tres filas, conocido por su diseño moderno, tecnología avanzada (pantallas, Sony audio, techo panorámico), acabados interiores de lujo, y opciones de motorización turbo, ofreciendo gran espacio y comodidad para familias, compitiendo en el segmento con un enfoque en la relación calidad-precio. Destaca por su equipamiento de asistencia al conductor y la disponibilidad de versiones PHEV (híbridas enchufables), proporcionando una experiencia premium y eficiente.', 1000, 'Gasolina', 2023, 7, 'tiggo8pro.jpeg', 'tiggo8pro.jpeg', 'tiggo8pro.jpeg', 'tiggo8pro.jpeg', 'tiggo8pro.jpeg', 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 00:49:29'),
+(3, 'Dzire', 3, 'El Dzire es tan irresistible como parece. Este sedán auténtico viene en el tamaño perfecto y rezuma un estilo exquisito, que llama la atención. Convierte su manejo diario en una experiencia extraordinaria, gracias a su interior espacioso y confortable que lo hace ideal para usted y su familia. No es de extrañar, te darás por vencido.', 500, 'Gasolina', 2019, 5, 'dzire.jpeg', 'dzire.jpeg', 'dzire.jpeg', 'dzire.jpeg', 'dzire.jpeg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 00:53:33'),
+(4, 'Frontier (NP300)', 4, 'La Nissan NP300 Frontier es una pickup robusta y versátil, conocida por su durabilidad y capacidad de carga para trabajo pesado, con versiones que ofrecen un motor de gasolina de 2.5L y opciones diésel, enfocada en la funcionalidad y un buen rendimiento para jornadas laborales en mercados como México y Centroamérica. Se destaca por su diseño resistente, capacidad de hasta 1.4 toneladas de carga y tecnologías de seguridad como ABS y EBD, siendo una herramienta confiable para negocios y uso diario. ', 800, 'Diesel', 2024, 5, 'frontier.jpeg', 'frontier.jpeg', 'frontier.jpeg', 'frontier.jpeg', 'frontier.jpeg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 00:59:49'),
+(5, 'Land Cruiser Prado', 5, 'La Toyota Land Cruiser Prado, especialmente en su nueva generación (serie 250), es una SUV todoterreno de lujo de tamaño completo que combina un diseño retro/robusto con tecnología moderna. Destaca por su chasis de largueros, motor diésel de 2.8L (aprox. 201-204 HP, 500 Nm), tracción 4x4, capacidad para hasta 7 pasajeros y gran capacidad de arrastre, orientada a la durabilidad y confort. ', 2000, 'Diesel', 2022, 7, 'landcruiserprado.jpeg', 'landcruiserprado.jpeg', 'landcruiserprado.jpeg', '2020-nissan-gtr-rakuda-tan-semi-aniline-leather-interior.jpglandcruiserprado.jpeg', 'landcruiserprado.jpeg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 01:02:42'),
+(6, 'Raize', 5, 'La Toyota Raize es una SUV subcompacta diseñada para el entorno urbano, caracterizada por su tamaño compacto (4.03 m de largo), motor eficiente (1.0L Turbo o 1.2L) y alta agilidad. Ofrece un diseño moderno con iluminación LED, buen espacio interior, conectividad avanzada (Apple CarPlay/Android Auto) y un consumo eficiente de combustible.', 400, 'Gasolina', 2018, 5, 'raize.jpeg', 'raize.jpeg', 'raize.jpeg', 'raize.jpeg', 'raize.jpeg', 1, 1, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 01:03:57'),
+(7, 'Escape', 5, 'El Ford Escape es un automóvil del segmento C producido por el fabricante estadounidense Ford Motor Company desde fines del año 2000. Es un cinco plazas con carrocería de cinco puertas que se ubica en la gama media de Ford ofreciendo un volumen entre el Ford EcoSport y el Ford Edge. Compite con modelos como los Jeep Compass, Honda CR-V, Hyundai Tucson, Nissan X-Trail, Kia Sportage, Toyota RAV4 y Mazda CX-5.', 800, 'Gasolina', 2017, 5, 'escape.jpeg', 'escape.jpeg', 'escape.jpeg', 'escape.jpeg', 'escape.jpeg', NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 01:05:41'),
+(8, 'Rush', 1, 'El Toyota Rush es un SUV compacto familiar con capacidad para 7 pasajeros y tracción trasera (RWD), destacando por su robustez, altura al suelo de \\(220\\text{mm}\\) y versatilidad para uso citadino y en carretera. Equipado con un motor 1.5L Dual VVT-i (102 HP), ofrece un consumo eficiente, 6 airbags y control de estabilidad (VSC). Es conocido como un vehículo fiable y de bajo mantenimiento, ideal para familias que buscan espacio sin el tamaño de un SUV mediano. ', 600, 'Gasolina', 2018, 5, 'rush.jpeg', 'rush.jpeg', 'rush.jpeg', 'rush.jpeg', 'rush.jpeg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2024-05-10 07:04:35', '2026-02-02 01:07:17');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `admin`
+-- Indices de la tabla `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblbooking`
+-- Indices de la tabla `tblbooking`
 --
 ALTER TABLE `tblbooking`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblbrands`
+-- Indices de la tabla `tblbrands`
 --
 ALTER TABLE `tblbrands`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblcontactusinfo`
+-- Indices de la tabla `tblcontactusinfo`
 --
 ALTER TABLE `tblcontactusinfo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblcontactusquery`
+-- Indices de la tabla `tblcontactusquery`
 --
 ALTER TABLE `tblcontactusquery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblpages`
+-- Indices de la tabla `tblpages`
 --
 ALTER TABLE `tblpages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblsubscribers`
+-- Indices de la tabla `tblsubscribers`
 --
 ALTER TABLE `tblsubscribers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbltestimonial`
+-- Indices de la tabla `tbltestimonial`
 --
 ALTER TABLE `tbltestimonial`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblusers`
+-- Indices de la tabla `tblusers`
 --
 ALTER TABLE `tblusers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `EmailId` (`EmailId`);
 
 --
--- Indexes for table `tblvehicles`
+-- Indices de la tabla `tblvehicles`
 --
 ALTER TABLE `tblvehicles`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tblbooking`
+-- AUTO_INCREMENT de la tabla `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tblbrands`
+-- AUTO_INCREMENT de la tabla `tblbrands`
 --
 ALTER TABLE `tblbrands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tblcontactusinfo`
+-- AUTO_INCREMENT de la tabla `tblcontactusinfo`
 --
 ALTER TABLE `tblcontactusinfo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tblcontactusquery`
+-- AUTO_INCREMENT de la tabla `tblcontactusquery`
 --
 ALTER TABLE `tblcontactusquery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tblpages`
+-- AUTO_INCREMENT de la tabla `tblpages`
 --
 ALTER TABLE `tblpages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `tblsubscribers`
+-- AUTO_INCREMENT de la tabla `tblsubscribers`
 --
 ALTER TABLE `tblsubscribers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tbltestimonial`
+-- AUTO_INCREMENT de la tabla `tbltestimonial`
 --
 ALTER TABLE `tbltestimonial`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tblusers`
+-- AUTO_INCREMENT de la tabla `tblusers`
 --
 ALTER TABLE `tblusers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tblvehicles`
+-- AUTO_INCREMENT de la tabla `tblvehicles`
 --
 ALTER TABLE `tblvehicles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
