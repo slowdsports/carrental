@@ -92,11 +92,11 @@
           <form method="post">
             <div class="form-group">
               <label>Desde:</label>
-              <input type="date" class="form-control" name="fromdate" required>
+              <input class="form-control flatpickr flatpickr-input active" type="text" placeholder="Fecha inicio" name="fromdate" required>
             </div>
             <div class="form-group">
               <label>Hasta:</label>
-              <input type="date" class="form-control" name="todate" required>
+              <input class="form-control flatpickr flatpickr-input active" type="text" placeholder="Fecha final" name="todate" required>
             </div>
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Mensaje" required></textarea>
@@ -109,6 +109,27 @@
               <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Iniciar sesión para reservar</a>
             <?php } ?>
           </form>
+          <script>
+            var reservas = <?php echo json_encode($reservas); ?>;
+            document.addEventListener("DOMContentLoaded", function() {
+            // Convertir reservas a rangos para flatpickr
+            let rangosBloqueados = reservas.map(r => {
+                return { from: r.from, to: r.to };
+            });
+
+            flatpickr("input[name='fromdate']", {
+                dateFormat: "Y-m-d",
+                disable: rangosBloqueados
+            });
+
+            flatpickr("input[name='todate']", {
+                dateFormat: "Y-m-d",
+                disable: rangosBloqueados
+            });
+        });
+
+          </script>
+
         </div>
       </aside>
     </div>

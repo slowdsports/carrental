@@ -1,4 +1,35 @@
 <?php
+// Obtener reservas activas del vehículo actual
+$vhid = $_GET['vhid'];
+$sqlBookings = "SELECT BookingNumber, FromDate, ToDate 
+                FROM tblbooking 
+                WHERE VehicleId=:vhid 
+                  AND (Status=0 OR Status=1)"; // solo reservas confirmadas
+$queryBookings = $dbh->prepare($sqlBookings);
+$queryBookings->bindParam(':vhid', $vhid, PDO::PARAM_INT);
+$queryBookings->execute();
+$bookings = $queryBookings->fetchAll(PDO::FETCH_OBJ);
+// Convertir a array para JS
+$reservas = [];
+foreach ($bookings as $bk) {
+    $reservas[] = [
+        "from" => $bk->FromDate,
+        "to" => $bk->ToDate
+    ];
+}
+
+
+// Mostrar reservas si existen
+if ($queryBookings->rowCount() > 0) {
+    //echo "<h4>Reservas actuales para este vehículo:</h4><ul>";
+    foreach ($bookings as $bk) {
+        //echo "<li>Reserva #{$bk->BookingNumber} desde {$bk->FromDate} hasta {$bk->ToDate}</li>";
+    }
+    echo "</ul>";
+} else {
+    //echo "<p style='color:green'>Este vehículo no tiene reservas activas. ¡Disponible!</p>";
+}
+
 if (isset($_POST['submit'])) {
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
@@ -7,7 +38,9 @@ if (isset($_POST['submit'])) {
     $status = 0;
     $vhid = $_GET['vhid'];
     $bookingno = mt_rand(100000000, 999999999);
-    $ret = "SELECT * FROM tblbooking where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
+    //$ret = "SELECT * FROM tblbooking where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
+    $ret = "SELECT * FROM tblbooking WHERE VehicleId=:vhid AND (Status=0 OR Status=1) AND (:fromdate BETWEEN date(FromDate) AND date(ToDate) OR :todate BETWEEN date(FromDate) AND date(ToDate) OR date(FromDate) BETWEEN :fromdate AND :todate
+          )";
     $query1 = $dbh->prepare($ret);
     $query1->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query1->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
@@ -30,14 +63,14 @@ if (isset($_POST['submit'])) {
         $lastInsertId = $dbh->lastInsertId();
         if ($lastInsertId) {
             echo "<script>alert('¡Reserva realizada!.');</script>";
-            echo "<script type='text/javascript'> document.location = 'my-booking.php'; </script>";
+            echo "<script type='text/javascript'> document.location = '?p=my-booking'; </script>";
         } else {
-            echo "<script>alert('¡Algo no funcionó bien. Por favor inténtalo nuevamente!');</script>";
-            echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+            echo "<script>alert('¡Algo no funcionó bien. NO se pudo realizar la reserva!');</script>";
+            echo "<script type='text/javascript'> document.location = '?p=vehiculos'; </script>";
         }
     } else {
         echo "<script>alert('Vehículo no disponible para este día');</script>";
-        echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+        //echo "<script type='text/javascript'> document.location = '?p=contactus'; </script>";
     }
 
 }
@@ -73,11 +106,11 @@ if ($query->rowCount() > 0) {
             alt="image" width="900" height="560">
     </div>
     <?php if ($result->Vimage5 == "") {
-    } else {?>
-    <div>
-        <img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive"
+    } else { ?>
+        <div>
+            <img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive"
                 alt="image" width="900" height="560">
-    </div>
+        </div>
     <?php } ?>
 </section>
 <!--/Listing-Image-Slider-->

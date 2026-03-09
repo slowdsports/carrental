@@ -108,6 +108,8 @@ if (isset($_POST['emailsubscibe'])) {
 <!--Slider-JS-->
 <script src="assets/js/slick.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
+<!--Date Picker-->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </body>
 

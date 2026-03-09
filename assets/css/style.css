@@ -2422,6 +2422,7 @@ form .slider.slider-horizontal {
 .product-listing-m {
   margin:0 auto 40px;
   overflow: hidden;
+  border-radius: 15px;
 }
 .product-listing-img {
   float: left;
@@ -2736,6 +2737,7 @@ table.info-tabel tr td {
 }
 .main_features ul li {
   border: 1px solid #dcd9d9;
+  border-radius: 15px;
   float: left;
   list-style: outside none none;
   margin: 0 17px 0 0;
@@ -2743,6 +2745,12 @@ table.info-tabel tr td {
   min-width: 123px;
   padding: 10px;
   text-align: center;
+}
+.main_features ul li:hover {
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #004bad75;
+  color: #fff;
 }
 .main_features ul li h5 {
 	font-weight:300;
@@ -3551,6 +3559,7 @@ table.info-tabel tr td {
   margin: 0 auto 40px;
   padding: 20px 16px 30px;
   position: relative;
+  border-radius: 15px;
 }
 .widget_heading {
   margin-bottom:26px;
@@ -4710,6 +4719,11 @@ h3 {
 }
 .main_features ul li {
   margin: 0 17px 10px 0;
+  border-radius: 15px;
+}
+.main_features:hover {
+  border-radius: 20px;
+  cursor: pointer;
 }
 #other_info {
 	display:block;
@@ -4929,6 +4943,7 @@ h3 {
 .recent_addedcars ul li {
 	width:100%;
 	float:none;
+  border-radius: 15px;
 }
 .car-location {
 	float:none;

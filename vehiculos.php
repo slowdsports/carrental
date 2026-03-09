@@ -21,7 +21,7 @@
         <div class="row">
             <!-- Contenido principal -->
             <div class="col-md-9 col-md-push-3">
-                <div class="result-sorting-wrapper">
+                <div style="display: none" class="result-sorting-wrapper">
                     <div class="sorting-count">
                         <?php
                         // Contar vehículos
@@ -76,7 +76,7 @@
             <!-- Side-Bar -->
             <aside class="col-md-3 col-md-pull-9">
                 <!-- Filtro -->
-                <div class="sidebar_widget">
+                <div style="display: none" class="sidebar_widget">
                     <div class="widget_heading">
                         <h5><i class="fa fa-filter"></i> ¡Encuentra tu vehículo!</h5>
                     </div>
