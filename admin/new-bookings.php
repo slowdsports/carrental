@@ -21,7 +21,7 @@ else{
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Car Rental Portal | New Bookings   </title>
+	<title>Destiny Rent a Car | Reservas</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -71,38 +71,38 @@ else{
 				<div class="row">
 					<div class="col-md-12">
 
-						<h2 class="page-title">New Bookings</h2>
+						<h2 class="page-title">Reservas</h2>
 
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Bookings Info</div>
+							<div class="panel-heading">Información de Reservas</div>
 							<div class="panel-body">
 
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 										<th>#</th>
-											<th>Name</th>
-											<th>Booking No.</th>
-											<th>Vehicle</th>
-											<th>From Date</th>
-											<th>To Date</th>
-											<th>Status</th>
-											<th>Posting date</th>
-											<th>Action</th>
+											<th>Nombre</th>
+											<th># Reserva</th>
+											<th>Vehículo</th>
+											<th>Desde</th>
+											<th>Hasta</th>
+											<th>Estado</th>
+											<th>Fecha</th>
+											<th>Acción</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
 										<th>#</th>
-										<th>Name</th>
-											<th>Booking No.</th>
-											<th>Vehicle</th>
-											<th>From Date</th>
-											<th>To Date</th>
-											<th>Status</th>
-											<th>Posting date</th>
-											<th>Action</th>
+										<th>Nombre</th>
+											<th># Reserva</th>
+											<th>Vehículo</th>
+											<th>Desde</th>
+											<th>Hasta</th>
+											<th>Estado</th>
+											<th>Fecha</th>
+											<th>Acción</th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -141,7 +141,7 @@ echo htmlentities('Confirmed');
 										<td>
 
 
-<a href="bookig-details.php?bid=<?php echo htmlentities($result->id);?>"> View</a>
+<a href="bookig-details.php?bid=<?php echo htmlentities($result->id);?>"> Detalles</a>
 </td>
 
 										</tr>

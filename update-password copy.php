@@ -38,7 +38,7 @@ $error="Your current password is wrong";
 <html lang="en">
 <head>
 
-<title>Car Rental Portal - Update Password</title>
+<title>Destiny Rent a Car - Update Password</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->

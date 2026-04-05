@@ -28,13 +28,10 @@
 
 		
 
-				<li><a href="testimonials.php"><i class="fa fa-table"></i> Reseñas</a></li>
 				<li><a href="manage-conactusquery.php"><i class="fa fa-desktop"></i> Preguntas</a></li>
 				<li><a href="reg-users.php"><i class="fa fa-users"></i> Usuarios</a></li>
 			<li><a href="manage-pages.php"><i class="fa fa-files-o"></i> Páginas</a></li>
 			<li><a href="update-contactinfo.php"><i class="fa fa-files-o"></i> Actualizar información de contacto</a></li>
-
-			<li><a href="manage-subscribers.php"><i class="fa fa-table"></i> Suscriptores</a></li>
 
 			</ul>
 		</nav>

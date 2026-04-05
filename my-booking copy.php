@@ -11,7 +11,7 @@ else{
 <html lang="en">
 <head>
 
-<title>Car Rental Portal - My Booking</title>
+<title>Destiny Rent a Car - My Booking</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->

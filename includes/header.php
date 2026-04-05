@@ -145,9 +145,11 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Inicio</a> </li>
 
-                        <li><a href="page.php?type=aboutus">Acerca de</a></li>
+                        <li><a href="?p=page&type=aboutus">Acerca de</a></li>
                         <li><a href="?p=vehiculos">Vehículos</a>
-                        <li><a href="page.php?type=faqs">FAQs</a></li>
+                        <li><a href="?p=page&type=terms">Términos</a></li>
+                        <li><a href="?p=page&type=privacy">Políticas</a></li>
+                        <li><a href="?p=page&type=faqs">FAQs</a></li>
                         <li><a href="contact-us.php">Contacto</a></li>
 
                     </ul>
