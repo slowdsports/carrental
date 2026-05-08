@@ -30,6 +30,7 @@
 
 				<li><a href="manage-conactusquery.php"><i class="fa fa-desktop"></i> Preguntas</a></li>
 				<li><a href="reg-users.php"><i class="fa fa-users"></i> Usuarios</a></li>
+			<li><a href="manage-features.php"><i class="fa fa-star"></i> Características</a></li>
 			<li><a href="manage-pages.php"><i class="fa fa-files-o"></i> Páginas</a></li>
 			<li><a href="update-contactinfo.php"><i class="fa fa-files-o"></i> Actualizar información de contacto</a></li>
 

@@ -127,4 +127,32 @@
   <!-- Dark Overlay-->
   <div class="dark-overlay"></div>
 </section>
-<!-- /Fun Facts--> 
+<!-- /Fun Facts-->
+<!-- Features -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>¿Por qué elegirnos?</h2>
+      <p>Descubre los beneficios que nos hacen la mejor opción para tu renta de vehículos.</p>
+    </div>
+    <div class="row">
+      <?php
+      $sqlF = "SELECT * FROM tblfeatures ORDER BY SortOrder ASC";
+      $queryF = $dbh->prepare($sqlF);
+      $queryF->execute();
+      $features = $queryF->fetchAll(PDO::FETCH_OBJ);
+      foreach ($features as $feat): ?>
+        <div class="col-md-4">
+          <div class="feature-item">
+            <div class="feature-icon-wrap">
+              <i class="fa <?= htmlentities($feat->Icon); ?>"></i>
+            </div>
+            <h4 class="feature-title"><?= htmlentities($feat->Title); ?></h4>
+            <p class="feature-subtitle"><?= htmlentities($feat->Subtitle); ?></p>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+<!-- /Features -->
