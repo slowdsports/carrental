@@ -58,11 +58,10 @@
                                         <?= htmlentities($result->BrandName); ?> , <?= htmlentities($result->VehiclesTitle); ?>
                                     </a>
                                 </h5>
-                                <p class="list-price">HNL <?= htmlentities($result->PricePerDay); ?> Por Día</p>
+                                <p class="list-price">USD $<?= htmlentities($result->PricePerDay); ?> Por Día</p>
                                 <ul>
                                     <li><i class="fa fa-user"></i> <?= htmlentities($result->SeatingCapacity); ?> asientos</li>
-                                    <li><i class="fa fa-calendar"></i> <?= htmlentities($result->ModelYear); ?></li>
-                                    <li><i class="fa fa-car"></i> <?= htmlentities($result->FuelType); ?></li>
+                                    <li><i class="fa fa-cogs"></i> <?= htmlentities($result->TransmissionType); ?></li>
                                 </ul>
                                 <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>" class="btn">
                                     Ver Detalles <span class="angle_arrow"><i class="fa fa-angle-right"></i></span>
@@ -148,7 +147,7 @@
                                                 <?= htmlentities($result->BrandName); ?> ,
                                                 <?= htmlentities($result->VehiclesTitle); ?>
                                             </a>
-                                            <p class="widget_price">HNL <?= htmlentities($result->PricePerDay); ?> Por Día</p>
+                                            <p class="widget_price">USD $<?= htmlentities($result->PricePerDay); ?> Por Día</p>
                                         </div>
                                     </li>
                                 <?php }

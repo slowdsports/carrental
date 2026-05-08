@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"c:\\\\xampp\\\\htdocs\\\\carrental\" -Depth 2 | Where-Object { $_.PSIsContainer -or $_.Extension -in @\\('.php', '.html', '.sql', '.js', '.css'\\) } | Select-Object -Property Name, FullName | Sort-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\xampp\\\\htdocs\\\\carrental\\\\assets\" -Recurse | Where-Object { $_.PSIsContainer } | Select-Object -ExpandProperty FullName | Sort-Object)",
+      "PowerShell(& \"C:\\\\xampp\\\\mysql\\\\bin\\\\mysql.exe\" -u root -e \"USE carrental; ALTER TABLE tblvehicles ADD COLUMN TransmissionType varchar\\(50\\) DEFAULT 'Automatico' AFTER SeatingCapacity; UPDATE tblvehicles SET VehiclesBrand = 7 WHERE id = 7; UPDATE tblvehicles SET VehiclesBrand = 5 WHERE id = 8; UPDATE tblvehicles SET TransmissionType = 'Automatico' WHERE id IN \\(1, 2, 5, 6, 7, 8\\); UPDATE tblvehicles SET TransmissionType = 'Manual' WHERE id = 4; UPDATE tblvehicles SET TransmissionType = 'Automatico' WHERE id = 3; SELECT id, VehiclesTitle, VehiclesBrand, TransmissionType FROM tblvehicles ORDER BY id;\" 2>&1)",
+      "PowerShell(& \"C:\\\\xampp\\\\mysql\\\\bin\\\\mysql.exe\" -u root -e \"USE carrental; SELECT id, VehiclesTitle, VehiclesBrand, TransmissionType, PricePerDay FROM tblvehicles ORDER BY id;\" 2>&1)"
+    ]
+  }
+}

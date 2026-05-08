@@ -7,7 +7,7 @@
       </div>
       <div class="col-md-3">
         <div class="price_info">
-          <p>HNL <?= htmlentities($result->PricePerDay); ?></p>Por día
+          <p>USD $<?= htmlentities($result->PricePerDay); ?></p>Por día
         </div>
       </div>
     </div>
@@ -17,9 +17,10 @@
         <!-- Características principales -->
         <div class="main_features">
           <ul>
-            <li><i class="fa fa-calendar"></i><h5><?= htmlentities($result->ModelYear); ?></h5><p>Año</p></li>
-            <li><i class="fa fa-cogs"></i><h5><?= htmlentities($result->FuelType); ?></h5><p>Combustible</p></li>
+            <li><i class="fa fa-cogs"></i><h5><?= htmlentities($result->TransmissionType); ?></h5><p>Transmisión</p></li>
             <li><i class="fa fa-user-plus"></i><h5><?= htmlentities($result->SeatingCapacity); ?></h5><p>Asientos</p></li>
+            <li><i class="fa fa-road"></i><h5>Ilimitados</h5><p>Kilómetros</p></li>
+            <li><i class="fa fa-plane"></i><h5>Terminal</h5><p>Retiro en aeropuerto</p></li>
           </ul>
         </div>
 
@@ -143,12 +144,13 @@
       <div class="row">
         <?php
         $bid = $_SESSION['brndid'];
-        $sql = "SELECT v.VehiclesTitle, b.BrandName, v.PricePerDay, v.FuelType, v.ModelYear, v.id, v.SeatingCapacity, v.VehiclesOverview, v.Vimage1
+        $sql = "SELECT v.VehiclesTitle, b.BrandName, v.PricePerDay, v.TransmissionType, v.id, v.SeatingCapacity, v.VehiclesOverview, v.Vimage1
                 FROM tblvehicles v
                 JOIN tblbrands b ON b.id = v.VehiclesBrand
-                WHERE v.VehiclesBrand = :bid";
+                WHERE v.VehiclesBrand = :bid AND v.id != :vid";
         $query = $dbh->prepare($sql);
         $query->bindParam(':bid', $bid, PDO::PARAM_STR);
+        $query->bindParam(':vid', $vhid, PDO::PARAM_INT);
         $query->execute();
         $results = $query->fetchAll(PDO::FETCH_OBJ);
 
@@ -167,11 +169,10 @@
                       <?= htmlentities($result->BrandName); ?> , <?= htmlentities($result->VehiclesTitle); ?>
                     </a>
                   </h5>
-                  <p class="list-price">HNL <?= htmlentities($result->PricePerDay); ?></p>
+                  <p class="list-price">USD $<?= htmlentities($result->PricePerDay); ?></p>
                   <ul class="features_list">
                     <li><i class="fa fa-user"></i> <?= htmlentities($result->SeatingCapacity); ?> asientos</li>
-                    <li><i class="fa fa-calendar"></i> <?= htmlentities($result->ModelYear); ?></li>
-                    <li><i class="fa fa-car"></i> <?= htmlentities($result->FuelType); ?></li>
+                    <li><i class="fa fa-cogs"></i> <?= htmlentities($result->TransmissionType); ?></li>
                   </ul>
                 </div>
               </div>

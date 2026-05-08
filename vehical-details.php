@@ -138,7 +138,7 @@ $_SESSION['brndid']=$result->bid;
       </div>
       <div class="col-md-3">
         <div class="price_info">
-          <p>HNL<?php echo htmlentities($result->PricePerDay);?> </p>Por día
+          <p>USD $<?php echo htmlentities($result->PricePerDay);?> </p>Por día
          
         </div>
       </div>
@@ -147,19 +147,21 @@ $_SESSION['brndid']=$result->bid;
       <div class="col-md-9">
         <div class="main_features">
           <ul>
-          
-            <li> <i class="fa fa-calendar" aria-hidden="true"></i>
-              <h5><?php echo htmlentities($result->ModelYear);?></h5>
-              <p>Año</p>
-            </li>
             <li> <i class="fa fa-cogs" aria-hidden="true"></i>
-              <h5><?php echo htmlentities($result->FuelType);?></h5>
-              <p>Combustible</p>
+              <h5><?php echo htmlentities($result->TransmissionType);?></h5>
+              <p>Transmisión</p>
             </li>
-       
             <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
               <h5><?php echo htmlentities($result->SeatingCapacity);?></h5>
               <p>Asientos</p>
+            </li>
+            <li> <i class="fa fa-road" aria-hidden="true"></i>
+              <h5>Ilimitados</h5>
+              <p>Kilómetros</p>
+            </li>
+            <li> <i class="fa fa-plane" aria-hidden="true"></i>
+              <h5>Terminal</h5>
+              <p>Retiro en aeropuerto</p>
             </li>
           </ul>
         </div>
@@ -381,29 +383,27 @@ $_SESSION['brndid']=$result->bid;
       <div class="row">
 <?php 
 $bid=$_SESSION['brndid'];
-$sql="SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.VehiclesBrand=:bid";
+$sql="SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.TransmissionType,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.VehiclesBrand=:bid AND tblvehicles.id != :vid";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':bid',$bid, PDO::PARAM_STR);
+$query->bindParam(':vid',$vhid, PDO::PARAM_INT);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $result)
-{ ?>      
+{ ?>
         <div class="col-md-3 grid_listing">
           <div class="product-listing-m gray-bg">
             <div class="product-listing-img"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1);?>" class="img-responsive" alt="image" /> </a>
             </div>
             <div class="product-listing-content">
               <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->BrandName);?> , <?php echo htmlentities($result->VehiclesTitle);?></a></h5>
-              <p class="list-price">HNL<?php echo htmlentities($result->PricePerDay);?></p>
-          
+              <p class="list-price">USD $<?php echo htmlentities($result->PricePerDay);?></p>
               <ul class="features_list">
-                
-             <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity);?> asientos</li>
-                <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear);?></li>
-                <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType);?></li>
+                <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity);?> asientos</li>
+                <li><i class="fa fa-cogs" aria-hidden="true"></i><?php echo htmlentities($result->TransmissionType);?></li>
               </ul>
             </div>
           </div>

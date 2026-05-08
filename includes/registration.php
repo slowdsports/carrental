@@ -3,9 +3,9 @@
 if(isset($_POST['signup']))
 {
 $fname=$_POST['fullname'];
-$email=$_POST['emailid']; 
-$mobile=$_POST['mobileno'];
-$password=md5($_POST['password']); 
+$email=$_POST['emailid'];
+$mobile=isset($_POST['mobileno']) ? trim($_POST['mobileno']) : '';
+$password=md5($_POST['password']);
 $sql="INSERT INTO  tblusers(FullName,EmailId,ContactNo,Password) VALUES(:fname,:email,:mobile,:password)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
@@ -59,7 +59,7 @@ error:function (){}
                   <input type="text" class="form-control" name="fullname" placeholder="Nombre Completo" required="required">
                 </div>
                       <div class="form-group">
-                  <input type="text" class="form-control" name="mobileno" placeholder="Número de celular" maxlength="10" required="required">
+                  <input type="text" class="form-control" name="mobileno" placeholder="Número de celular (opcional)" maxlength="10">
                 </div>
                 <div class="form-group">
                   <input type="email" class="form-control" name="emailid" id="emailid" onBlur="checkAvailability()" placeholder="Correo Electrónico" required="required">

@@ -95,7 +95,7 @@ $msg="Actualizado exitosamente";
 									<thead>
 										<tr>
 										<th>#</th>
-												<th> Nombre</th>
+											<th> Nombre</th>
 											<th>Correo</th>
 											<th>Número</th>
 										<th>Fecha Nacimiento</th>

@@ -33,12 +33,11 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="resentnewcar">
                     <?php
-                    $sql = "SELECT 
+                    $sql = "SELECT
                     v.VehiclesTitle,
                     b.BrandName,
                     v.PricePerDay,
-                    v.FuelType,
-                    v.ModelYear,
+                    v.TransmissionType,
                     v.id,
                     v.SeatingCapacity,
                     v.VehiclesOverview,
@@ -60,11 +59,8 @@
                                                 class="img-responsive" alt="Imagen del vehículo">
                                         </a>
                                         <ul>
-                                            <li><i class="fa fa-car" aria-hidden="true"></i>
-                                                <?= htmlentities($result->FuelType); ?></li>
-                                            <li><i class="fa fa-calendar" aria-hidden="true"></i> Año
-                                                <?= htmlentities($result->ModelYear); ?>
-                                            </li>
+                                            <li><i class="fa fa-cogs" aria-hidden="true"></i>
+                                                <?= htmlentities($result->TransmissionType); ?></li>
                                             <li><i class="fa fa-user" aria-hidden="true"></i>
                                                 <?= htmlentities($result->SeatingCapacity); ?> Asientos</li>
                                         </ul>
@@ -75,7 +71,7 @@
                                                 <?= htmlentities($result->VehiclesTitle); ?>
                                             </a>
                                         </h6>
-                                        <span class="price">HNL <?= htmlentities($result->PricePerDay); ?> / Día</span>
+                                        <span class="price">USD $<?= htmlentities($result->PricePerDay); ?> / Día</span>
                                     </div>
                                     <div class="inventory_info_m">
                                         <p><?= htmlentities(substr($result->VehiclesOverview, 0, 70)); ?>...</p>
