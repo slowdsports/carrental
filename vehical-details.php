@@ -5,9 +5,15 @@ error_reporting(0);
 if(isset($_POST['submit']))
 {
 $fromdate=$_POST['fromdate'];
-$todate=$_POST['todate']; 
+$todate=$_POST['todate'];
 $message=$_POST['message'];
-$useremail=$_SESSION['login'];
+if($_SESSION['login']) {
+    $useremail = $_SESSION['login'];
+    $guestname = null;
+} else {
+    $useremail = trim($_POST['guestemail']);
+    $guestname = trim($_POST['guestname']);
+}
 $status=0;
 $vhid=$_GET['vhid'];
 $bookingno=mt_rand(100000000, 999999999);
@@ -22,10 +28,11 @@ $results1=$query1->fetchAll(PDO::FETCH_OBJ);
 if($query1->rowCount()==0)
 {
 
-$sql="INSERT INTO  tblbooking(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:vhid,:fromdate,:todate,:message,:status)";
+$sql="INSERT INTO tblbooking(BookingNumber,userEmail,GuestName,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:guestname,:vhid,:fromdate,:todate,:message,:status)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':bookingno',$bookingno,PDO::PARAM_STR);
 $query->bindParam(':useremail',$useremail,PDO::PARAM_STR);
+$query->bindParam(':guestname',$guestname,PDO::PARAM_STR);
 $query->bindParam(':vhid',$vhid,PDO::PARAM_STR);
 $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
 $query->bindParam(':todate',$todate,PDO::PARAM_STR);
@@ -35,13 +42,18 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-echo "<script>alert('¡Reserva realizada!.');</script>";
-echo "<script type='text/javascript'> document.location = 'my-booking.php'; </script>";
+if($_SESSION['login']) {
+    echo "<script>alert('¡Reserva realizada!.');</script>";
+    echo "<script type='text/javascript'> document.location = 'my-booking.php'; </script>";
+} else {
+    echo "<script>alert('¡Reserva realizada! Tu número de reserva es: " . htmlspecialchars($bookingno) . ". Te contactaremos pronto.');</script>";
+    echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
 }
-else 
+}
+else
 {
 echo "<script>alert('¡Algo no funcionó bien. Por favor inténtalo nuevamente!');</script>";
- echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
 } }  else{
  echo "<script>alert('Vehículo no disponible para este día');</script>"; 
  echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
@@ -359,15 +371,17 @@ $_SESSION['brndid']=$result->bid;
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Mensaje" required></textarea>
             </div>
-          <?php if($_SESSION['login'])
-              {?>
+          <?php if(!$_SESSION['login']): ?>
               <div class="form-group">
-                <input type="submit" class="btn"  name="submit" value="Hacer Reserva">
+                <input type="text" class="form-control" name="guestname" placeholder="Tu nombre completo" required>
               </div>
-              <?php } else { ?>
-<a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Iniciar sesión para reservar</a>
-
-              <?php } ?>
+              <div class="form-group">
+                <input type="email" class="form-control" name="guestemail" placeholder="Tu correo electrónico" required>
+              </div>
+          <?php endif; ?>
+          <div class="form-group">
+            <input type="submit" class="btn" name="submit" value="Hacer Reserva">
+          </div>
           </form>
         </div>
       </aside>

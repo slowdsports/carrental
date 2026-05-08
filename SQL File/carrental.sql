@@ -51,6 +51,7 @@ CREATE TABLE `tblbooking` (
   `id` int(11) NOT NULL,
   `BookingNumber` bigint(12) DEFAULT NULL,
   `userEmail` varchar(100) DEFAULT NULL,
+  `GuestName` varchar(120) DEFAULT NULL,
   `VehicleId` int(11) DEFAULT NULL,
   `FromDate` varchar(20) DEFAULT NULL,
   `ToDate` varchar(20) DEFAULT NULL,

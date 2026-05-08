@@ -114,9 +114,11 @@ echo "<script type='text/javascript'> document.location = 'confirmed-bookings.ph
 
 									<?php 
 $bid=intval($_GET['bid']);
-									$sql = "SELECT tblusers.*,tblbrands.BrandName,tblvehicles.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber,
+									$sql = "SELECT tblusers.FullName,tblusers.ContactNo,tblusers.Address,tblusers.City,tblusers.Country,
+tblbooking.GuestName,tblbooking.userEmail,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber,tblbooking.LastUpdationDate,
+tblbrands.BrandName,tblvehicles.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,
 DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totalnodays,tblvehicles.PricePerDay
-									  from tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id where tblbooking.id=:bid";
+FROM tblbooking JOIN tblvehicles ON tblvehicles.id=tblbooking.VehicleId LEFT JOIN tblusers ON tblusers.EmailId=tblbooking.userEmail JOIN tblbrands ON tblvehicles.VehiclesBrand=tblbrands.id WHERE tblbooking.id=:bid";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':bid',$bid, PDO::PARAM_STR);
 $query->execute();
@@ -128,31 +130,37 @@ foreach($results as $result)
 {				?>	
 	<h3 style="text-align:center; color:red">Reserva #<?php echo htmlentities($result->BookingNumber);?> </h3>
 
-		<tr>
-											<th colspan="4" style="text-align:center;color:blue">Detalles de Usuario</th>
+		<?php $isGuest = empty($result->FullName); ?>
+										<tr>
+											<th colspan="4" style="text-align:center;color:blue">
+												Detalles de <?php echo $isGuest ? 'Invitado' : 'Usuario'; ?>
+												<?php if ($isGuest): ?><span class="label label-info" style="font-size:12px;margin-left:6px">Invitado</span><?php endif; ?>
+											</th>
 										</tr>
 										<tr>
 											<th># Reserva</th>
 											<td>#<?php echo htmlentities($result->BookingNumber);?></td>
 											<th>Nombre</th>
-											<td><?php echo htmlentities($result->FullName);?></td>
+											<td><?php echo htmlentities($isGuest ? ($result->GuestName ?: '—') : $result->FullName); ?></td>
 										</tr>
-										<tr>											
+										<tr>
 											<th>Correo</th>
-											<td><?php echo htmlentities($result->EmailId);?></td>
+											<td><?php echo htmlentities($result->userEmail); ?></td>
 											<th>Celular</th>
-											<td><?php echo htmlentities($result->ContactNo);?></td>
+											<td><?php echo htmlentities($isGuest ? '—' : ($result->ContactNo ?: '—')); ?></td>
 										</tr>
-											<tr>											
+										<?php if (!$isGuest): ?>
+										<tr>
 											<th>Dirección</th>
-											<td><?php echo htmlentities($result->Address);?></td>
+											<td><?php echo htmlentities($result->Address ?: '—'); ?></td>
 											<th>Ciudad</th>
-											<td><?php echo htmlentities($result->City);?></td>
+											<td><?php echo htmlentities($result->City ?: '—'); ?></td>
 										</tr>
-											<tr>											
-											<th>Country</th>
-											<td colspan="3"><?php echo htmlentities($result->Country);?></td>
+										<tr>
+											<th>País</th>
+											<td colspan="3"><?php echo htmlentities($result->Country ?: '—'); ?></td>
 										</tr>
+										<?php endif; ?>
 
 										<tr>
 											<th colspan="4" style="text-align:center;color:blue">Detalles de Reserva</th>

@@ -34,7 +34,13 @@ if (isset($_POST['submit'])) {
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
     $message = $_POST['message'];
-    $useremail = $_SESSION['login'];
+    if ($_SESSION['login']) {
+        $useremail = $_SESSION['login'];
+        $guestname = null;
+    } else {
+        $useremail = trim($_POST['guestemail']);
+        $guestname = trim($_POST['guestname']);
+    }
     $status = 0;
     $vhid = $_GET['vhid'];
     $bookingno = mt_rand(100000000, 999999999);
@@ -50,10 +56,11 @@ if (isset($_POST['submit'])) {
 
     if ($query1->rowCount() == 0) {
 
-        $sql = "INSERT INTO  tblbooking(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:vhid,:fromdate,:todate,:message,:status)";
+        $sql = "INSERT INTO tblbooking(BookingNumber,userEmail,GuestName,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:guestname,:vhid,:fromdate,:todate,:message,:status)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
         $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
+        $query->bindParam(':guestname', $guestname, PDO::PARAM_STR);
         $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
         $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
         $query->bindParam(':todate', $todate, PDO::PARAM_STR);
@@ -62,8 +69,13 @@ if (isset($_POST['submit'])) {
         $query->execute();
         $lastInsertId = $dbh->lastInsertId();
         if ($lastInsertId) {
-            echo "<script>alert('¡Reserva realizada!.');</script>";
-            echo "<script type='text/javascript'> document.location = '?p=my-booking'; </script>";
+            if ($_SESSION['login']) {
+                echo "<script>alert('¡Reserva realizada!.');</script>";
+                echo "<script type='text/javascript'> document.location = '?p=my-booking'; </script>";
+            } else {
+                echo "<script>alert('¡Reserva realizada! Tu número de reserva es: " . htmlspecialchars($bookingno) . ". Te contactaremos pronto.');</script>";
+                echo "<script type='text/javascript'> document.location = '?p=vehiculos'; </script>";
+            }
         } else {
             echo "<script>alert('¡Algo no funcionó bien. NO se pudo realizar la reserva!');</script>";
             echo "<script type='text/javascript'> document.location = '?p=vehiculos'; </script>";

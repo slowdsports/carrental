@@ -102,13 +102,17 @@
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Mensaje" required></textarea>
             </div>
-            <?php if ($_SESSION['login']) { ?>
+            <?php if (!$_SESSION['login']): ?>
               <div class="form-group">
-                <input type="submit" class="btn" name="submit" value="Hacer Reserva">
+                <input type="text" class="form-control" name="guestname" placeholder="Tu nombre completo" required>
               </div>
-            <?php } else { ?>
-              <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Iniciar sesión para reservar</a>
-            <?php } ?>
+              <div class="form-group">
+                <input type="email" class="form-control" name="guestemail" placeholder="Tu correo electrónico" required>
+              </div>
+            <?php endif; ?>
+            <div class="form-group">
+              <input type="submit" class="btn" name="submit" value="Hacer Reserva">
+            </div>
           </form>
           <script>
             var reservas = <?php echo json_encode($reservas); ?>;
