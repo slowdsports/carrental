@@ -2,5 +2,5 @@
 deployment:
   tasks:
     #- export DEPLOYPATH=/home/u6514444/web/spicy
-    - export DEPLOYPATH=/home/u5869826/public_html
+    - export DEPLOYPATH=/home/u6613652/web
     - /bin/cp -Rf * $DEPLOYPATH
