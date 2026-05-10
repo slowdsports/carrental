@@ -1,5 +1,5 @@
 <div class="brand clearfix">
-	<a href="dashboard.php" style="font-size: 25px;">Desatiny Rent a Car | Administración</a>  
+	<a href="dashboard.php" style="font-size: 25px;">Destiny Rent a Car | Administración</a>  
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			
