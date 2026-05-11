@@ -1,10 +1,10 @@
 <?php
+// Error debug
+error_reporting(0);
 // Empieza la sesión
 session_start();
 // Archivos necesarios
 include('includes/config.php');
-// Error debug
-error_reporting(error_level: 0);
 // Cabecera
 include('includes/header.php');
 // Lógica de indexación
