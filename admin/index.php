@@ -1,4 +1,6 @@
 <?php
+// Error debug
+error_reporting(0);
 session_start();
 include('includes/config.php');
 if(isset($_POST['login']))
