@@ -14,38 +14,45 @@ if (in_array($_SERVER['SERVER_NAME'] ?? 'localhost', array('localhost', '127.0.0
 // Establish database connection.
 try
 {
-$dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+$dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS, array(
+    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_SILENT,
+));
 }
 catch (PDOException $e)
 {
-exit("Error: " . $e->getMessage());
+exit("Error al conectar a la base de datos.");
 }
 
 // Auto-migrations: crean/alteran tablas del panel admin al primer arranque en producción
 $_adminMigrate = function ($dbh) {
     $db = DB_NAME;
 
-    // 1. Tabla de roles de admin
-    $dbh->exec("CREATE TABLE IF NOT EXISTS `tbladminroles` (
-        `id`           int(11)      NOT NULL AUTO_INCREMENT,
-        `RoleName`     varchar(100) NOT NULL,
-        `CreationDate` timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+    try {
+        // 1. Tabla de roles de admin
+        $dbh->exec("CREATE TABLE IF NOT EXISTS `tbladminroles` (
+            `id`           int(11)      NOT NULL AUTO_INCREMENT,
+            `RoleName`     varchar(100) NOT NULL,
+            `CreationDate` timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 
-    // Sembrar roles por defecto si la tabla está vacía
-    $q = $dbh->query("SELECT COUNT(*) FROM `tbladminroles`");
-    if ($q && (int)$q->fetchColumn() === 0) {
-        $dbh->exec("INSERT INTO `tbladminroles` (`RoleName`) VALUES ('Super Admin'), ('Editor'), ('Soporte')");
-    }
+        // Sembrar roles por defecto si la tabla está vacía
+        $q = $dbh->query("SELECT COUNT(*) FROM `tbladminroles`");
+        if ($q && (int)$q->fetchColumn() === 0) {
+            $dbh->exec("INSERT INTO `tbladminroles` (`RoleName`) VALUES ('Super Admin'), ('Editor'), ('Soporte')");
+        }
+    } catch (Exception $e) { /* Ignorar */ }
 
-    // 2. Columna RoleId en tabla admin (asigna Super Admin a cuentas existentes)
-    $q = $dbh->query("SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
-        WHERE TABLE_SCHEMA='{$db}' AND TABLE_NAME='admin' AND COLUMN_NAME='RoleId'");
-    if ($q && (int)$q->fetchColumn() === 0) {
-        $dbh->exec("ALTER TABLE `admin` ADD COLUMN `RoleId` int(11) NOT NULL DEFAULT 1");
-        $dbh->exec("UPDATE `admin` SET `RoleId`=1");
-    }
+    try {
+        // 2. Columna RoleId en tabla admin (asigna Super Admin a cuentas existentes)
+        $q = $dbh->query("SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
+            WHERE TABLE_SCHEMA='{$db}' AND TABLE_NAME='admin' AND COLUMN_NAME='RoleId'");
+        if ($q && (int)$q->fetchColumn() === 0) {
+            $dbh->exec("ALTER TABLE `admin` ADD COLUMN `RoleId` int(11) NOT NULL DEFAULT 1");
+            $dbh->exec("UPDATE `admin` SET `RoleId`=1");
+        }
+    } catch (Exception $e) { /* Ignorar */ }
 };
 $_adminMigrate($dbh);
 unset($_adminMigrate);
