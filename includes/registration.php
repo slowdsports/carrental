@@ -16,11 +16,29 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-echo "<script>alert('Registration successfull. Now you can login');</script>";
+// ¿Esta persona ya había reservado como invitado antes de registrarse?
+$sqlPrev = "SELECT BookingNumber FROM tblbooking WHERE userEmail=:email ORDER BY PostingDate DESC";
+$queryPrev = $dbh->prepare($sqlPrev);
+$queryPrev->bindParam(':email', $email, PDO::PARAM_STR);
+$queryPrev->execute();
+$prevBookings = $queryPrev->fetchAll(PDO::FETCH_OBJ);
+
+$welcomeBody = '<p>Hola ' . htmlspecialchars($fname) . ',</p>'
+    . '<p>¡Gracias por registrarte en Destiny Rent a Car! Ya puedes iniciar sesión para ver el estado de tus reservas y agilizar tu próxima renta.</p>';
+if (count($prevBookings) > 0) {
+    $welcomeBody .= '<p>Vimos que ya tenías reserva(s) con nosotros antes de registrarte:</p><ul>';
+    foreach ($prevBookings as $pb) {
+        $welcomeBody .= '<li>Reserva #' . htmlspecialchars($pb->BookingNumber) . '</li>';
+    }
+    $welcomeBody .= '</ul><p>Ahora podrás verlas directamente desde tu cuenta.</p>';
 }
-else 
+send_app_email($email, '¡Bienvenido a Destiny Rent a Car!', render_email_template('¡Registro exitoso!', $welcomeBody));
+
+echo "<script>alert('¡Registro exitoso! Ya puedes iniciar sesión.');</script>";
+}
+else
 {
-echo "<script>alert('Something went wrong. Please try again');</script>";
+echo "<script>alert('Algo no funcionó bien. Por favor inténtalo nuevamente.');</script>";
 }
 }
 

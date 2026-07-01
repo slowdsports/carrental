@@ -56,14 +56,14 @@
                       "AntiLock Braking System (ABS)" => $result->AntiLockBrakingSystem,
                       "Power Steering (EPS)" => $result->PowerSteering,
                       "Ventanas eléctricas" => $result->PowerWindows,
-                      "Carplay y/o Android Auto" => $result->CDPlayer,
+                      "Carplay y/o Android Auto" => $result->CarplayAndroidAuto,
                       "Asientos de cuero" => $result->LeatherSeats,
-                      "Cámara de reversa" => $result->CentralLocking,
-                      "Control de Estabilidad (ESP / VSC)" => $result->PowerDoorLocks,
+                      "Cámara de reversa" => $result->RearCamera,
+                      "Control de Estabilidad (ESP / VSC)" => $result->StabilityControl,
                       "Brake Assist" => $result->BrakeAssist,
                       "Bolsa de aire de conductor" => $result->DriverAirbag,
                       "Bolsa de aire de pasajeros" => $result->PassengerAirbag,
-                      "Sensor de parqueo" => $result->CrashSensor
+                      "Sensor de parqueo" => $result->ParkingSensor
                     ];
 
                     foreach ($accesorios as $nombre => $valor) {

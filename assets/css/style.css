@@ -1123,6 +1123,38 @@ nav.navbar {
 .find-car-form .col-form-6:nth-child(2n+1) {
   margin-right: 10px;
 }
+.car-search-widget-section {
+  margin-top: -55px;
+  position: relative;
+  z-index: 10;
+}
+.car-search-widget-section .car-finder-box {
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 25px 25px 5px;
+}
+.car-search-widget-section .find-car-form label {
+  color: #777777;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.car-search-widget-section .find-car-form .form-control {
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  height: 44px;
+}
+.car-search-widget-section .find-car-form .btn {
+  height: 44px;
+  padding: 0;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .car-search-widget-section {
+    margin-top: 20px;
+  }
+}
 
 
 /*-------------------------

@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'admin','5c428d8875d2948607f3e3fe134d71b4','2024-05-01 12:22:38');
+INSERT INTO `admin` VALUES (1,'admin','5c428d8875d2948607f3e3fe134d71b4','2026-05-08 17:00:52');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,6 +153,33 @@ LOCK TABLES `tblcontactusquery` WRITE;
 /*!40000 ALTER TABLE `tblcontactusquery` DISABLE KEYS */;
 INSERT INTO `tblcontactusquery` VALUES (1,'Kunal ','kunal@gmail.com','7977779798','I want to know you brach in Chandigarh?','2024-06-04 09:34:51',1);
 /*!40000 ALTER TABLE `tblcontactusquery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tblfeatures`
+--
+
+DROP TABLE IF EXISTS `tblfeatures`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tblfeatures` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Icon` varchar(100) NOT NULL DEFAULT 'fa-star',
+  `Title` varchar(150) NOT NULL,
+  `Subtitle` varchar(255) NOT NULL,
+  `SortOrder` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblfeatures`
+--
+
+LOCK TABLES `tblfeatures` WRITE;
+/*!40000 ALTER TABLE `tblfeatures` DISABLE KEYS */;
+INSERT INTO `tblfeatures` VALUES (1,'fa-heart','Servicio de Lealtad','Acumulamos puntos en cada reserva para brindarte beneficios exclusivos y atencion preferencial.',1),(2,'fa-car','Elija su vehiculo','Selecciona entre nuestra amplia flota el vehiculo que mejor se adapte a tus necesidades y presupuesto.',2),(3,'fa-gift','Gana Recompensas','Canjea tus puntos por descuentos, upgrades y beneficios especiales en tu proxima renta.',3);
+/*!40000 ALTER TABLE `tblfeatures` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -325,4 +352,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-08 10:48:38
+-- Dump completed on 2026-05-11  8:36:15

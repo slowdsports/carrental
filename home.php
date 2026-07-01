@@ -14,6 +14,71 @@
     </div>
 </section>
 <!-- /Banner Promo -->
+<!-- Car Search Widget -->
+<section class="car-search-widget-section">
+    <div class="container">
+        <div class="car-finder-box">
+            <form class="find-car-form" action="?p=vehiculos" method="get">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label><i class="fa fa-map-marker" aria-hidden="true"></i> Lugar de recogida</label>
+                            <select class="form-control" name="pickup_location">
+                                <?php
+                                $sqlLoc = "SELECT * FROM tblpickuplocations WHERE IsActive=1 ORDER BY SortOrder ASC";
+                                $queryLoc = $dbh->prepare($sqlLoc);
+                                $queryLoc->execute();
+                                $locations = $queryLoc->fetchAll(PDO::FETCH_OBJ);
+                                foreach ($locations as $loc) { ?>
+                                    <option value="<?= htmlentities($loc->id); ?>"><?= htmlentities($loc->LocationName); ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><i class="fa fa-calendar" aria-hidden="true"></i> Recogida</label>
+                            <input type="text" class="form-control flatpickr" id="searchFromDate" name="fromdate" placeholder="Fecha y hora" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label><i class="fa fa-calendar" aria-hidden="true"></i> Entrega</label>
+                            <input type="text" class="form-control flatpickr" id="searchToDate" name="todate" placeholder="Fecha y hora" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var flatpickrTimeOptions = {
+        enableTime: true,
+        time_24hr: false,
+        minuteIncrement: 30,
+        defaultHour: 10,
+        dateFormat: "Y-m-d H:i",
+        altInput: true,
+        altFormat: "d M Y, h:i K",
+        minDate: "today"
+    };
+    var fromPicker = flatpickr("#searchFromDate", Object.assign({}, flatpickrTimeOptions, {
+        onChange: function (selectedDates, dateStr) {
+            toPicker.set("minDate", dateStr);
+        }
+    }));
+    var toPicker = flatpickr("#searchToDate", flatpickrTimeOptions);
+});
+</script>
+<!-- /Car Search Widget -->
 <!-- Resent Cat-->
 <section class="section-padding gray-bg">
     <div class="container">
@@ -52,29 +117,27 @@
                     if ($query->rowCount() > 0) {
                         foreach ($results as $result) { ?>
                             <div class="col-list-3">
-                                <div class="recent-car-list">
-                                    <div class="car-info-box">
+                                <div class="recent-vehicle-card">
+                                    <div class="recent-vehicle-img">
                                         <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>">
                                             <img src="admin/img/vehicleimages/<?= htmlentities($result->Vimage1); ?>"
                                                 class="img-responsive" alt="Imagen del vehículo">
                                         </a>
-                                        <ul>
-                                            <li><i class="fa fa-cogs" aria-hidden="true"></i>
-                                                <?= htmlentities($result->TransmissionType); ?></li>
-                                            <li><i class="fa fa-user" aria-hidden="true"></i>
-                                                <?= htmlentities($result->SeatingCapacity); ?> Asientos</li>
-                                        </ul>
                                     </div>
-                                    <div class="car-title-m">
+                                    <div class="recent-vehicle-body">
                                         <h6>
                                             <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>">
                                                 <?= htmlentities($result->VehiclesTitle); ?>
                                             </a>
                                         </h6>
-                                        <span class="price">USD $<?= htmlentities($result->PricePerDay); ?> / Día</span>
-                                    </div>
-                                    <div class="inventory_info_m">
-                                        <p><?= htmlentities(substr($result->VehiclesOverview, 0, 70)); ?>...</p>
+                                        <span class="recent-vehicle-price">USD $<?= htmlentities($result->PricePerDay); ?> / Día</span>
+                                        <ul class="recent-vehicle-meta">
+                                            <li><i class="fa fa-cogs" aria-hidden="true"></i>
+                                                <?= htmlentities($result->TransmissionType); ?></li>
+                                            <li><i class="fa fa-user" aria-hidden="true"></i>
+                                                <?= htmlentities($result->SeatingCapacity); ?> asientos</li>
+                                        </ul>
+                                        <p class="recent-vehicle-desc"><?= htmlentities(substr($result->VehiclesOverview, 0, 70)); ?>...</p>
                                     </div>
                                 </div>
                             </div>

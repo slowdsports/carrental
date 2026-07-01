@@ -30,14 +30,11 @@ if (isset($_POST['emailsubscibe'])) {
       <div class="row">
 
         <div class="col-md-6">
-          <h6>Acerca de</h6>
+          <h6>Información</h6>
           <ul>
-
-
-            <li><a href="page.php?type=aboutus">Acerca de</a></li>
-            <li><a href="page.php?type=faqs">FAQs</a></li>
-            <li><a href="page.php?type=privacy">Privacidad</a></li>
-            <li><a href="page.php?type=terms">Terminos de uso</a></li>
+            <li><a href="?p=page&type=faqs">FAQs</a></li>
+            <li><a href="?p=page&type=privacy">Privacidad</a></li>
+            <li><a href="?p=page&type=terms">Terminos de uso</a></li>
           </ul>
         </div>
 
@@ -110,6 +107,7 @@ if (isset($_POST['emailsubscibe'])) {
 <script src="assets/js/owl.carousel.min.js"></script>
 <!--Date Picker-->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
 </body>
 

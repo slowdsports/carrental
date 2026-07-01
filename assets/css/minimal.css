@@ -1,0 +1,311 @@
+/* =======================================================
+   Minimal theme overrides
+   Capa de estilos que suaviza la plantilla original hacia
+   un diseño minimalista: fondos claros, tarjetas blancas con
+   bordes sutiles, tipografía limpia y acento azul (#004aad,
+   el mismo color de marca que ya usa el sitio).
+   Se carga después de style.css en includes/header.php.
+   ======================================================= */
+
+/* ---- Base ---- */
+.gray-bg {
+  background: #f7f8fa;
+}
+.btn {
+  border-radius: 8px;
+}
+
+/* ---- Encabezados de página interior ---- */
+.page-header {
+  position: relative;
+}
+.page-header .dark-overlay {
+  background: rgba(0, 30, 70, 0.55);
+}
+.fun-facts-section .dark-overlay {
+  background: rgba(0, 30, 70, 0.65);
+}
+
+/* ---- Pestañas (tabs) ---- */
+.nav-tabs > li a {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  color: #555555;
+  font-weight: 700;
+  padding: 9px 28px;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover,
+.recent-tab .nav.nav-tabs li.active a {
+  background: #004aad;
+  border-color: #004aad;
+  color: #ffffff;
+}
+
+/* ---- Footer claro ---- */
+.footer-top {
+  background: #f7f8fa;
+  color: #6b6b6b;
+}
+.footer-top h6 {
+  color: #111111;
+}
+.footer-top ul li a {
+  color: #6b6b6b;
+}
+input.newsletter-input {
+  border: 1px solid #d8d8d8;
+  color: #111111;
+}
+.footer-bottom {
+  background: #ffffff;
+  border-top: 1px solid #ececec;
+}
+.footer_widget {
+  color: #6b6b6b;
+}
+.copy-right {
+  color: #6b6b6b;
+}
+
+/* ---- Vehicle detail: panel lateral de reserva ---- */
+.share_vehicle {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 6px;
+}
+.sidebar_widget {
+  box-shadow: 0 4px 18px rgba(17, 17, 17, 0.05);
+}
+
+/* =======================================================
+   Tarjeta de resultados de búsqueda (vehiculos.php)
+   ======================================================= */
+.result-sorting-wrapper {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  margin-bottom: 16px;
+}
+.sorting-count {
+  float: none;
+  margin-right: auto;
+}
+.result-sort-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.result-sort-form label {
+  color: #6b6b6b;
+  font-size: 13px;
+  margin: 0;
+  white-space: nowrap;
+}
+.result-sort-form select {
+  width: auto;
+  height: 38px;
+  border-radius: 6px;
+  border: 1px solid #d8d8d8;
+}
+.search-filter-summary {
+  background: #eef4ff;
+  border: 1px solid #d7e6ff;
+  border-radius: 8px;
+  color: #1a4f9c;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+}
+.vehicle-result-card {
+  background: #ffffff;
+  border: 1px solid #e9e9ec;
+  border-radius: 10px;
+  display: flex;
+  align-items: stretch;
+  margin: 0 0 18px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.vehicle-result-card:hover {
+  box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08);
+  transform: translateY(-2px);
+}
+.vehicle-result-img {
+  flex: 0 0 220px;
+  max-width: 220px;
+  overflow: hidden;
+}
+.vehicle-result-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 150px;
+}
+.vehicle-result-body {
+  flex: 1 1 auto;
+  padding: 18px 20px;
+}
+.vehicle-result-body h5 {
+  margin: 0 0 4px;
+}
+.vehicle-result-body h5 a {
+  color: #111111;
+}
+.vehicle-result-meta {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.vehicle-result-meta li {
+  display: inline-block;
+  color: #6b6b6b;
+  font-size: 13px;
+  margin: 0 18px 6px 0;
+}
+.vehicle-result-meta li .fa {
+  color: #004aad;
+  margin-right: 6px;
+}
+.vehicle-result-side {
+  flex: 0 0 180px;
+  max-width: 180px;
+  border-left: 1px solid #ececec;
+  padding: 18px 16px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.vehicle-result-side .price-note {
+  color: #6b6b6b;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.vehicle-result-side .price-amount {
+  color: #111111;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.vehicle-result-side .price-period {
+  color: #6b6b6b;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.vehicle-result-side .btn {
+  padding: 7px 20px;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .vehicle-result-card {
+    flex-wrap: wrap;
+  }
+  .vehicle-result-img,
+  .vehicle-result-side {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .vehicle-result-side {
+    border-left: none;
+    border-top: 1px solid #ececec;
+    align-items: stretch;
+    text-align: left;
+  }
+}
+
+/* =======================================================
+   Tarjeta de autos destacados (home.php)
+   ======================================================= */
+.recent-vehicle-card {
+  background: #ffffff;
+  border: 1px solid #e9e9ec;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.recent-vehicle-card:hover {
+  box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08);
+  transform: translateY(-2px);
+}
+.recent-vehicle-img img {
+  width: 100%;
+  display: block;
+}
+.recent-vehicle-body {
+  padding: 16px 18px 18px;
+}
+.recent-vehicle-body h6 {
+  margin: 0 0 2px;
+}
+.recent-vehicle-body h6 a {
+  color: #111111;
+}
+.recent-vehicle-price {
+  color: #004aad;
+  font-weight: 800;
+}
+.recent-vehicle-meta {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+.recent-vehicle-meta li {
+  display: inline-block;
+  color: #6b6b6b;
+  font-size: 12px;
+  margin-right: 14px;
+}
+.recent-vehicle-meta li .fa {
+  color: #004aad;
+  margin-right: 5px;
+}
+.recent-vehicle-desc {
+  color: #9e9e9e;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+/* =======================================================
+   Confirmación de reserva
+   ======================================================= */
+.booking-confirmation-box {
+  background: #ffffff;
+  border: 1px solid #e9e9ec;
+  border-radius: 10px;
+  padding: 50px 30px;
+}
+.booking-confirmation-icon {
+  color: #1f9d55;
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+.booking-substitution-note {
+  background: #eef4ff;
+  border: 1px solid #d7e6ff;
+  border-radius: 8px;
+  margin: 20px 0 0;
+  padding: 14px 18px;
+  text-align: left;
+}
+.booking-substitution-note p {
+  color: #1a4f9c;
+  margin: 0;
+}
+.booking-substitution-note .fa {
+  margin-right: 6px;
+}
+.booking-confirmation-cta {
+  border-top: 1px solid #ececec;
+  margin-top: 30px;
+  padding-top: 30px;
+}
+.booking-confirmation-cta .btn {
+  margin: 6px;
+}

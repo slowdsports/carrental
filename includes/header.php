@@ -11,6 +11,7 @@ $pageTitles = [
     'vehiculos'  => 'Vehículos Disponibles | Renta de Autos San Pedro Sula — Destiny',
     'contact-us' => 'Contáctanos | Destiny Rent a Car San Pedro Sula, Honduras',
     'my-booking' => 'Mis Reservas | Destiny Rent a Car',
+    'reserva-confirmada' => 'Reserva Confirmada | Destiny Rent a Car',
     'profile'    => 'Mi Perfil | Destiny Rent a Car',
     'search'     => 'Buscar Vehículos | Destiny Rent a Car San Pedro Sula',
     'page'       => [
@@ -123,6 +124,7 @@ $pageDesc = $pageDescs[$page] ?? 'Destiny Rent a Car — Tu mejor opción para r
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/minimal.css" type="text/css">
     <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
     <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
     <link href="assets/css/slick.css" rel="stylesheet">
@@ -143,6 +145,13 @@ $pageDesc = $pageDescs[$page] ?? 'Destiny Rent a Car — Tu mejor opción para r
         .succWrap  { padding:10px; margin:0 0 20px; background:#fff; border-left:4px solid #5cb85c; box-shadow:0 1px 1px rgba(0,0,0,.1); }
     </style>
     <?php endif; ?>
+    <!-- SweetAlert2 en el <head> para que Swal esté disponible antes de cualquier script inline del body -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    window.alert = function (message) {
+        Swal.fire({ text: String(message), confirmButtonText: 'Aceptar', confirmButtonColor: '#004aad' });
+    };
+    </script>
 </head>
 
 <body>
@@ -234,8 +243,6 @@ $pageDesc = $pageDescs[$page] ?? 'Destiny Rent a Car — Tu mejor opción para r
                 </div>
                 <div class="collapse navbar-collapse" id="navigation">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.php">Inicio</a></li>
-                        <li><a href="?p=page&type=aboutus">Acerca de</a></li>
                         <li><a href="?p=vehiculos">Vehículos</a></li>
                         <li><a href="?p=page&type=terms">Términos</a></li>
                         <li><a href="?p=page&type=privacy">Políticas</a></li>
