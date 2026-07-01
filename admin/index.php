@@ -1,6 +1,8 @@
 <?php
-session_start();
 error_reporting(0);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once('includes/config.php');
 
 define('ADMIN_ROOT', __DIR__ . '/');

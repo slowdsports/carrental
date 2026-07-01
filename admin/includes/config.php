@@ -27,15 +27,15 @@ $_adminMigrate = function ($dbh) {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 
     // Sembrar roles por defecto si la tabla está vacía
-    $cnt = $dbh->query("SELECT COUNT(*) FROM `tbladminroles`")->fetchColumn();
-    if ((int)$cnt === 0) {
+    $q = $dbh->query("SELECT COUNT(*) FROM `tbladminroles`");
+    if ($q && (int)$q->fetchColumn() === 0) {
         $dbh->exec("INSERT INTO `tbladminroles` (`RoleName`) VALUES ('Super Admin'), ('Editor'), ('Soporte')");
     }
 
     // 2. Columna RoleId en tabla admin (asigna Super Admin a cuentas existentes)
     $q = $dbh->query("SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
         WHERE TABLE_SCHEMA='{$db}' AND TABLE_NAME='admin' AND COLUMN_NAME='RoleId'");
-    if ((int)$q->fetchColumn() === 0) {
+    if ($q && (int)$q->fetchColumn() === 0) {
         $dbh->exec("ALTER TABLE `admin` ADD COLUMN `RoleId` int(11) NOT NULL DEFAULT 1");
         $dbh->exec("UPDATE `admin` SET `RoleId`=1");
     }
