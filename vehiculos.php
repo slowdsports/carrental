@@ -20,13 +20,21 @@ if ($filterLocation) {
     $filterLocationName = $locRow ? $locRow->LocationName : '';
 }
 
+// Overlap: un vehículo está ocupado si su reserva activa se solapa con [fromdate, todate].
+// Lógica: NO (reserva termina antes de que empiece | reserva empieza después de que termine)
+// → DATE(FromDate) <= :todate AND DATE(ToDate) >= :fromdate
+// Cada parámetro aparece una sola vez (evita el bug de PDO con params duplicados).
 $availabilitySubquery = " v.id NOT IN (
                 SELECT VehicleId FROM tblbooking
                 WHERE (Status=0 OR Status=1)
-                AND (:fromdate BETWEEN DATE(FromDate) AND DATE(ToDate)
-                     OR :todate BETWEEN DATE(FromDate) AND DATE(ToDate)
-                     OR DATE(FromDate) BETWEEN :fromdate AND :todate)
+                AND DATE(FromDate) <= :todate
+                AND DATE(ToDate)   >= :fromdate
             ) ";
+
+// Parámetros de fecha para propagar a la página de detalle
+$dateParams = $dateFilterActive
+    ? '&amp;fromdate=' . urlencode($filterFromDateTime) . '&amp;todate=' . urlencode($filterToDateTime)
+    : '';
 
 // Orden de los resultados
 $sortOption = isset($_GET['sort']) ? $_GET['sort'] : 'recommended';
@@ -129,14 +137,14 @@ if ($sortOption === 'price_asc') {
                     foreach ($results as $result) { ?>
                         <div class="vehicle-result-card">
                             <div class="vehicle-result-img">
-                                <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>">
+                                <a href="?p=vehiculo&amp;vhid=<?= htmlentities($result->id); ?><?= $dateParams; ?>">
                                     <img src="admin/img/vehicleimages/<?= htmlentities($result->Vimage1); ?>"
                                         alt="Imagen del vehículo">
                                 </a>
                             </div>
                             <div class="vehicle-result-body">
                                 <h5>
-                                    <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>">
+                                    <a href="?p=vehiculo&amp;vhid=<?= htmlentities($result->id); ?><?= $dateParams; ?>">
                                         <?= htmlentities($result->BrandName); ?> <?= htmlentities($result->VehiclesTitle); ?>
                                     </a>
                                 </h5>
@@ -151,7 +159,7 @@ if ($sortOption === 'price_asc') {
                                 <span class="price-note">Pago en el mostrador</span>
                                 <span class="price-amount">USD $<?= htmlentities($result->PricePerDay); ?></span>
                                 <span class="price-period">por día</span>
-                                <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>" class="btn">Reservar</a>
+                                <a href="?p=vehiculo&amp;vhid=<?= htmlentities($result->id); ?><?= $dateParams; ?>" class="btn">Reservar</a>
                             </div>
                         </div>
                     <?php }
@@ -182,13 +190,13 @@ if ($sortOption === 'price_asc') {
                                 foreach ($recent as $result) { ?>
                                     <li class="gray-bg">
                                         <div class="recent_post_img">
-                                            <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>">
+                                            <a href="?p=vehiculo&amp;vhid=<?= htmlentities($result->id); ?><?= $dateParams; ?>">
                                                 <img src="admin/img/vehicleimages/<?= htmlentities($result->Vimage1); ?>"
                                                     alt="Imagen reciente">
                                             </a>
                                         </div>
                                         <div class="recent_post_title">
-                                            <a href="?p=vehiculo&vhid=<?= htmlentities($result->id); ?>">
+                                            <a href="?p=vehiculo&amp;vhid=<?= htmlentities($result->id); ?><?= $dateParams; ?>">
                                                 <?= htmlentities($result->BrandName); ?> ,
                                                 <?= htmlentities($result->VehiclesTitle); ?>
                                             </a>

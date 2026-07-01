@@ -1,6 +1,13 @@
 <?php
 $vhid = intval($_GET['vhid']);
 
+// Fechas pre-seleccionadas desde el buscador (formato "Y-m-d H:i" o "Y-m-d")
+$preFromDateTime = isset($_GET['fromdate']) ? trim($_GET['fromdate']) : '';
+$preToDateTime   = isset($_GET['todate'])   ? trim($_GET['todate'])   : '';
+$dtPattern       = '/^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$/';
+$preFromDate     = preg_match($dtPattern, $preFromDateTime) ? substr($preFromDateTime, 0, 10) : '';
+$preToDate       = preg_match($dtPattern, $preToDateTime)   ? substr($preToDateTime,   0, 10) : '';
+
 // Datos del vehículo solicitado (se usa para mostrar la página y para la lógica de reserva)
 $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.id=:vhid";
 $query = $dbh->prepare($sql);

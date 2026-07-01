@@ -2,7 +2,8 @@
 <section class="car-search-widget-section">
     <div class="container">
         <div class="car-finder-box">
-            <form class="find-car-form" action="?p=vehiculos" method="get">
+            <form class="find-car-form" action="?" method="get">
+                <input type="hidden" name="p" value="vehiculos">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">

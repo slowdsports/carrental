@@ -93,11 +93,13 @@
           <form method="post">
             <div class="form-group">
               <label>Desde:</label>
-              <input class="form-control flatpickr flatpickr-input active" type="text" placeholder="Fecha inicio" name="fromdate" required>
+              <input class="form-control" type="text" id="bookFromDate" placeholder="Fecha inicio" name="fromdate"
+                <?= $preFromDate ? 'value="' . htmlentities($preFromDate) . '"' : ''; ?> required>
             </div>
             <div class="form-group">
               <label>Hasta:</label>
-              <input class="form-control flatpickr flatpickr-input active" type="text" placeholder="Fecha final" name="todate" required>
+              <input class="form-control" type="text" id="bookToDate" placeholder="Fecha final" name="todate"
+                <?= $preToDate ? 'value="' . htmlentities($preToDate) . '"' : ''; ?> required>
             </div>
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Mensaje" required></textarea>
@@ -115,24 +117,36 @@
             </div>
           </form>
           <script>
-            var reservas = <?php echo json_encode($reservas); ?>;
-            document.addEventListener("DOMContentLoaded", function() {
-            // Convertir reservas a rangos para flatpickr
-            let rangosBloqueados = reservas.map(r => {
+          (function () {
+            var reservas = <?= json_encode($reservas); ?>;
+            var preFrom  = <?= json_encode($preFromDate); ?>;
+            var preTo    = <?= json_encode($preToDate); ?>;
+
+            var rangosBloqueados = reservas.map(function(r) {
                 return { from: r.from, to: r.to };
             });
 
-            flatpickr("input[name='fromdate']", {
+            var fpTo = flatpickr("#bookToDate", {
                 dateFormat: "Y-m-d",
+                minDate: preFrom || "today",
+                defaultDate: preTo  || null,
                 disable: rangosBloqueados
             });
 
-            flatpickr("input[name='todate']", {
+            flatpickr("#bookFromDate", {
                 dateFormat: "Y-m-d",
-                disable: rangosBloqueados
+                minDate: "today",
+                defaultDate: preFrom || null,
+                disable: rangosBloqueados,
+                onChange: function(selectedDates, dateStr) {
+                    // El "Hasta" no puede ser anterior al "Desde"
+                    fpTo.set("minDate", dateStr);
+                    if (fpTo.selectedDates[0] && fpTo.selectedDates[0] < selectedDates[0]) {
+                        fpTo.clear();
+                    }
+                }
             });
-        });
-
+          }());
           </script>
 
         </div>
