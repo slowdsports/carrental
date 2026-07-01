@@ -69,5 +69,7 @@ $_migrate = function ($dbh) {
 $_migrate($dbh);
 unset($_migrate);
 
-require_once(__DIR__ . '/mailer.php');
+if (file_exists(__DIR__ . '/mailer.php')) {
+    require_once(__DIR__ . '/mailer.php');
+}
 ?>
