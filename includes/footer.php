@@ -108,6 +108,41 @@ if (isset($_POST['emailsubscibe'])) {
 <!--Date Picker-->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<!-- NProgress -->
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<!-- Prefetch páginas al hacer hover (acelera la carga percibida) -->
+<script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.js" type="module"></script>
+<script>
+(function () {
+    NProgress.configure({ showSpinner: false, trickleSpeed: 100, minimum: 0.2 });
+
+    // Fade-in al terminar de cargar la página actual
+    document.body.style.opacity = '1';
+
+    // Interceptar clics de navegación para fade-out + barra de progreso
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href');
+        // Ignorar: anclas, protocolos especiales, externos, modales, data-confirm, nueva pestaña
+        if (!href || /^(#|javascript:|mailto:|tel:)/.test(href)) return;
+        if (/^https?:\/\/|^\/\//.test(href)) return;
+        if (a.target === '_blank') return;
+        if (a.dataset.toggle || a.dataset.confirm !== undefined) return;
+        // Iniciar transición de salida
+        NProgress.start();
+        document.body.style.opacity = '0';
+    });
+
+    // Restaurar visibilidad si el navegador sirve desde caché (back/forward)
+    window.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+            NProgress.done();
+            document.body.style.opacity = '1';
+        }
+    });
+}());
+</script>
 
 </body>
 

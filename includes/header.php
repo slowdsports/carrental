@@ -152,6 +152,15 @@ $pageDesc = $pageDescs[$page] ?? 'Destiny Rent a Car — Tu mejor opción para r
         Swal.fire({ text: String(message), confirmButtonText: 'Aceptar', confirmButtonColor: '#004aad' });
     };
     </script>
+    <!-- NProgress (barra de carga de navegación) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+    <!-- El body empieza invisible para eliminar el flash entre páginas -->
+    <style>
+    body { opacity: 0; transition: opacity 0.22s ease; }
+    #nprogress .bar { background: #004aad !important; height: 3px; }
+    #nprogress .peg { box-shadow: 0 0 10px #004aad, 0 0 5px #004aad !important; }
+    </style>
+    <noscript><style>body { opacity: 1 !important; }</style></noscript>
 </head>
 
 <body>
