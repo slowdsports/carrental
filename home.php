@@ -1,19 +1,3 @@
-<!-- Banner Promo -->
-<section id="banner" class="banner-section">
-    <div class="container">
-        <div class="div_zindex">
-            <div class="row">
-                <div class="col-md-5 col-md-push-7">
-                    <div class="banner_content">
-                        <h1>&nbsp;</h1>
-                        <p>&nbsp; </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- /Banner Promo -->
 <!-- Car Search Widget -->
 <section class="car-search-widget-section">
     <div class="container">
