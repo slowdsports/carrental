@@ -160,7 +160,7 @@ $pageDesc = $pageDescs[$page] ?? 'Destiny Rent a Car — Tu mejor opción para r
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 col-md-2">
-                        <div class="logo"> <a href="index.php"><img src="assets/images/logob.png" alt="Destiny Rent a Car" /></a>
+                        <div class="logo"> <a href="/"><img src="assets/images/logob.png" alt="Destiny Rent a Car" /></a>
                         </div>
                     </div>
                     <div class="col-sm-9 col-md-10">

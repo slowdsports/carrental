@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Eliminar index.php de la URL (301 permanente, preserva query string)
+RewriteCond %{THE_REQUEST} \s/index\.php [NC]
+RewriteRule ^index\.php$ / [R=301,L,QSA]
