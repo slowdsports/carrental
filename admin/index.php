@@ -11,19 +11,41 @@ $loginError = '';
 if (!isset($_SESSION['alogin']) && isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = md5($_POST['password']);
-    $sql = "SELECT admin.id, admin.UserName, admin.RoleId, tbladminroles.RoleName
-            FROM admin
-            LEFT JOIN tbladminroles ON tbladminroles.id = admin.RoleId
-            WHERE admin.UserName=:username and admin.Password=:password";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':username', $username, PDO::PARAM_STR);
-    $query->bindParam(':password', $password, PDO::PARAM_STR);
-    $query->execute();
-    $adminRow = $query->fetch(PDO::FETCH_OBJ);
+
+    // Intentar query completo con roles (requiere migraciones aplicadas)
+    $adminRow = false;
+    $query = $dbh->prepare(
+        "SELECT a.id, a.UserName, COALESCE(a.RoleId, 1) AS RoleId, COALESCE(r.RoleName, 'Super Admin') AS RoleName
+         FROM admin a
+         LEFT JOIN tbladminroles r ON r.id = COALESCE(a.RoleId, 1)
+         WHERE a.UserName=:username AND a.Password=:password"
+    );
+    if ($query) {
+        $query->bindParam(':username', $username, PDO::PARAM_STR);
+        $query->bindParam(':password', $password, PDO::PARAM_STR);
+        $query->execute();
+        $adminRow = $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Fallback: query simple si tbladminroles o RoleId aún no existen
+    if (!$adminRow) {
+        $query2 = $dbh->prepare("SELECT id, UserName FROM admin WHERE UserName=:username AND Password=:password");
+        if ($query2) {
+            $query2->bindParam(':username', $username, PDO::PARAM_STR);
+            $query2->bindParam(':password', $password, PDO::PARAM_STR);
+            $query2->execute();
+            $row2 = $query2->fetch(PDO::FETCH_OBJ);
+            if ($row2) {
+                $adminRow = (object) array('id' => $row2->id, 'UserName' => $row2->UserName,
+                                           'RoleId' => 1, 'RoleName' => 'Super Admin');
+            }
+        }
+    }
+
     if ($adminRow) {
-        $_SESSION['alogin'] = $adminRow->UserName;
-        $_SESSION['aadminid'] = $adminRow->id;
-        $_SESSION['aroleid'] = $adminRow->RoleId;
+        $_SESSION['alogin']    = $adminRow->UserName;
+        $_SESSION['aadminid']  = $adminRow->id;
+        $_SESSION['aroleid']   = $adminRow->RoleId;
         $_SESSION['arolename'] = $adminRow->RoleName;
         header('Location: index.php');
         exit;
