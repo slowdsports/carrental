@@ -1,9 +1,16 @@
 <?php
-// DB credentials.
-define('DB_HOST','localhost');
-define('DB_USER','u6613652_root');
-define('DB_PASS','sJmJPvG5?Q0n-+6Y');
-define('DB_NAME','u6613652_carrental');
+// Credenciales según entorno (local XAMPP vs producción Zomro)
+if (in_array($_SERVER['SERVER_NAME'] ?? 'localhost', array('localhost', '127.0.0.1'))) {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'carrental');
+} else {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'u6613652_root');
+    define('DB_PASS', 'sJmJPvG5?Q0n-+6Y');
+    define('DB_NAME', 'u6613652_carrental');
+}
 // Establish database connection.
 try
 {
