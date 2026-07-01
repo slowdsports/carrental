@@ -141,11 +141,12 @@ input.newsletter-input {
   flex: 0 0 220px;
   max-width: 220px;
   overflow: hidden;
+  background: #f7f8fa;
 }
 .vehicle-result-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   min-height: 150px;
 }
 .vehicle-result-body {
@@ -238,11 +239,12 @@ input.newsletter-input {
 .recent-vehicle-img {
   height: 200px;
   overflow: hidden;
+  background: #f7f8fa;
 }
 .recent-vehicle-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -250,11 +252,12 @@ input.newsletter-input {
 .product-listing-img {
   height: 200px;
   overflow: hidden;
+  background: #f7f8fa;
 }
 .product-listing-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 .recent-vehicle-body {
