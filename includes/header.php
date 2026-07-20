@@ -164,6 +164,13 @@ $pageDesc = $pageDescs[$page] ?? 'Destiny Rent a Car — Tu mejor opción para r
 </head>
 
 <body>
+    <?php if (defined('COMING_SOON') && COMING_SOON && !empty($_SESSION['alogin'])): ?>
+    <div style="background:#004aad;color:#fff;text-align:center;padding:9px 16px;font-size:12.5px;font-family:system-ui,sans-serif;letter-spacing:0.01em;">
+        <strong>Vista previa — Admin:</strong> <?= htmlentities($_SESSION['alogin']); ?> &nbsp;·&nbsp;
+        El sitio está en modo <em>Coming Soon</em> para los visitantes.
+        &nbsp;<a href="?p=logout" style="color:#fff;text-decoration:underline;font-weight:600;">Cerrar sesión</a>
+    </div>
+    <?php endif; ?>
     <header>
         <div class="default-header">
             <div class="container">

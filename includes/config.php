@@ -1,4 +1,10 @@
 <?php
+// ─── Modo mantenimiento ──────────────────────────────────────────────────────
+// true  → muestra "Coming Soon" a visitantes; admins pueden entrar con su login.
+// false → sitio público activo para todos.
+define('COMING_SOON', true);
+// ────────────────────────────────────────────────────────────────────────────
+
 // Credenciales según entorno (local XAMPP vs producción Zomro)
 if (in_array($_SERVER['SERVER_NAME'] ?? 'localhost', array('localhost', '127.0.0.1'))) {
     define('DB_HOST', 'localhost');
