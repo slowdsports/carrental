@@ -79,24 +79,6 @@ $(function(e) {
 	});
 
 
-/*------------------------------------------------------------------
-	Listing Image Slider { Style 1}
-	-------------------------------------------------------------------*/
-	var owl = $("#listing_img_slider");
-	owl.owlCarousel({
-	  itemsCustom : [
-		[0, 1],
-		[450, 1],
-		[700, 2],
-		[1024, 3],
-		[1200, 3],
-	  ],
-	  loop: true,
-	  nav: true,
-	  navigation : true,
-	  pagination: false,
-	  autoPlay  : 3000
-	});
 
 
 

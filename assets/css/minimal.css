@@ -15,6 +15,17 @@
   border-radius: 8px;
 }
 
+/* ---- Detalle de vehículo: imagen única (ya sin slider) ---- */
+#listing_img_slider {
+  margin-bottom: 20px;
+}
+#listing_img_slider img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
 /* ---- Widget de búsqueda (sin banner encima) ---- */
 .car-search-widget-section {
   margin-top: 0;
