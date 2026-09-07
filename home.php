@@ -64,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <!-- /Car Search Widget -->
-<!-- Resent Cat-->
+<!-- Resent Cat (oculto: no se muestra el grid de vehículos en el index) -->
+<?php if (false): ?>
 <section class="section-padding gray-bg">
     <div class="container">
         <div class="section-header text-center">
@@ -133,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>
 </section>
+<?php endif; ?>
 <!-- /Resent Cat -->
  <!-- Fun Facts-->
 <section class="fun-facts-section">
