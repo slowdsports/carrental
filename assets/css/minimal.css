@@ -11,6 +11,23 @@
 .gray-bg {
   background: #f7f8fa;
 }
+
+/* ---- Header con fondo negro (para el logo actual) ---- */
+.default-header .uppercase_text {
+  color: #fff;
+}
+.default-header .circle_icon {
+  border-color: #fff;
+  color: #fff;
+}
+.default-header .header_widgets a,
+.default-header .social-follow ul li a {
+  color: #ccc;
+}
+.default-header .header_widgets a:hover,
+.default-header .social-follow ul li a:hover {
+  color: #fff;
+}
 .btn {
   border-radius: 8px;
 }
