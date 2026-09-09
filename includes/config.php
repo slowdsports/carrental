@@ -2,7 +2,7 @@
 // ─── Modo mantenimiento ──────────────────────────────────────────────────────
 // true  → muestra "Coming Soon" a visitantes; admins pueden entrar con su login.
 // false → sitio público activo para todos.
-define('COMING_SOON', true);
+define('COMING_SOON', false);
 // ────────────────────────────────────────────────────────────────────────────
 
 // Credenciales según entorno (local XAMPP vs producción Zomro)
